@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "yuga/framework": "dev"
+        "yuga/framework": "dev-master"
     },
     "autoload": {
         "psr-4": {

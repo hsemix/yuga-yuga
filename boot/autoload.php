@@ -19,7 +19,7 @@ $_ENV['base_path'] = realpath(__DIR__.'/../');
 $_ENV['yuga_path'] = __DIR__;
 $loader = require $_ENV['base_path'].'/vendor/autoload.php';
 
-include_once $_ENV['base_path'] .'/vendo/yuga/framework/src/Yuga/Support/helpers.php';
+include_once $_ENV['base_path'] .'/vendor/yuga/framework/src/Yuga/Support/helpers.php';
 
 if (file_exists($_ENV['base_path'] .'/app/helpers/helpers.php'))
     include_once $_ENV['base_path'] .'/app/helpers/helpers.php';
