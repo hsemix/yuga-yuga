@@ -4,6 +4,7 @@
     "keywords": ["framework", "Yuga"],
     "homepage": "https://yuga.byakuno.com",
     "type" : "project",
+    "license": "MIT",
     "support": {
         "source": "https://github.com/yuga-yuga"
     },
