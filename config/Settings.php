@@ -1,4 +1,11 @@
 <?php
+/**
+ * Holdes App settings for example the session name that you want to use, the remember 
+ * key token name that you wish to use
+ * And settings for the email clients
+ * 
+ * @return array
+ */
 return [
     'session' => [
         'name' => 'bank_user',
@@ -14,9 +21,9 @@ return [
         'PHPMailer' => [
             'auth' 			=> true, // authentication
             'debug_mode' 	=> 0, // debug mode // for debugging use 2, and 0 on a live server
-            'host' 			=> 'mail.malibro.com', // host name
-            'username' 		=> 'malibro@malibro.com', // your email address
-            'password' 		=> 'flairup@#1234', // password to the provided email address
+            'host' 			=> '', // host name
+            'username' 		=> '', // your email address
+            'password' 		=> '', // password to the provided email address
             'security' 		=> 'ssl', // security mode
             'port' 			=> 465, // port number,
             'is_html' 		=> true,

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Holds database settings for all your database connections
+ * 
+ * @return array
+ */
 return [
     'db' => [
         'defaultDriver' => env('DATABASE_DRIVER'),

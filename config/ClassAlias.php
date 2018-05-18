@@ -1,4 +1,10 @@
 <?php
+/**
+ * Alias to long class names 
+ * Feel free to add in any number of classes
+ * 
+ * @return array
+ */
 return [
     'DB'                    => \Yuga\Database\Query\DB::class,
     'Route'                 => \Yuga\Route\Route::class,
