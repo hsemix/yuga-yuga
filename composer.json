@@ -3,6 +3,7 @@
     "description": "The Yuga Framework.",
     "keywords": ["framework", "Yuga"],
     "homepage": "https://yuga.byakuno.com",
+    "type" : "project",
     "support": {
         "source": "https://github.com/yuga-yuga"
     },
@@ -16,5 +17,7 @@
         "psr-4": {
             "App\\": "app/"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
