@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__.'/vendor/autoload.php';
+require_once __DIR__.'/boot/autoload.php';
+
+/**
+ * Start the application
+ */
+
+$app = require __DIR__.'/boot/app.php';
+
+//--------------------------------------------------------------------------
+// Load The Yuga Console Application
+//--------------------------------------------------------------------------
+
+use Yuga\Console\Application as ConsoleApplication;
+
+
+$app->setRequestForYugaConsole();
+
+$yuga = ConsoleApplication::start($app);
+
+//--------------------------------------------------------------------------
+// Run The Yuga Application
+//--------------------------------------------------------------------------
+
+$status = $yuga->run();
+
+//--------------------------------------------------------------------------
+// Shutdown The Application
+//--------------------------------------------------------------------------
+
+$app->terminate();
+
+exit($status);
