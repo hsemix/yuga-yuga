@@ -1,6 +1,6 @@
 <?php
 require_once 'autoload.php';
-$app = new \Yuga\Application(
+$app = new \Yuga\Application\Application(
     realpath(__DIR__.'/../')
 );
 
