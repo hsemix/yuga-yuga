@@ -18,7 +18,7 @@ Route::get('hello', function () {
 
 **The Default Route Files**
 
-All Yuga routes are defined in your route files, which are located in the `routes` directory. These files are automatically loaded by the framework. The `routes/web.php` file defines routes that are for your web application. These routes automatically have CSRF protection. 
+All Yuga routes are defined in your routes file, which are located in the `routes` directory. This file is automatically loaded by the framework. The `routes/web.php` file defines routes that are for your web application. These routes automatically have CSRF protection. 
 
 **Available Router Methods**
 
