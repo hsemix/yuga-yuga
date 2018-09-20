@@ -4,7 +4,7 @@ description: >-
   the entire application. We have quite a few ways you can do that as follows
 ---
 
-# Basic Routing
+# Routing
 
 ### [Basic Routing](https://yuga-framework.gitbook.io/documentation/basic-routing#basic)
 
