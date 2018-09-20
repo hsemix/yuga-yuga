@@ -12,7 +12,7 @@ The most basic Yuga routes accept a URI and a `Callback`, providing a very simpl
 
 ```php
 Route::get('hello', function () {
-    return 'Hello World';
+    echo 'Hello World';
 });
 ```
 
@@ -39,11 +39,11 @@ Sometimes you may need to use a route that calls multiple HTTP verbs. You can do
 
 ```php
 Route::match(['get', 'post'], '/', function () {
-    //
+    // your code
 });
 
 Route::all('foo', function () {
-    //
+    // your code
 });
 ```
 
@@ -55,7 +55,7 @@ When ever you need to get sections of the URI within your route, this approach m
 
 ```php
 Route::get('post/{id}', function ($id) {
-    return 'Post with id: '.$id;
+    echo 'Post with id: '.$id;
 });
 ```
 
@@ -63,7 +63,7 @@ You may define as many route parameters as required by your route:
 
 ```php
 Route::get('posts/{post}/comments/{comment}', function ($post, $comment) {
-    //
+    // your code
 });
 ```
 
@@ -89,11 +89,11 @@ You may constrain the format of your route parameters using the `where` method o
 
 ```php
 Route::get('user/{id}', function ($id) {
-    //
+    // your code
 })->where('id', '[0-9]+');
 
 Route::get('user/{id}/{name}', function ($id, $name) {
-    //
+    // your code
 })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
 ```
 
@@ -103,7 +103,7 @@ Named routes allow you to conveniently make URLs or redirects for specific route
 
 ```php
 Route::get('user/posts', function () {
-    //
+    // your code
 })->name('posts');
 ```
 
@@ -129,7 +129,7 @@ If the named route defines parameters, you can pass the parameters as the second
 
 ```php
 Route::get('user/{id}/posts', function ($id) {
-    //
+    // your code
 })->name('posts');
 
 $url = route('posts', ['id' => 1]);
