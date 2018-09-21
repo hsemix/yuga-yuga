@@ -135,3 +135,31 @@ Route::get('user/{id}/posts', function ($id) {
 $url = route('posts', ['id' => 1]);
 ```
 
+### Form Method Spoofing
+
+HTML forms do not support `PUT`, `PATCH` or `DELETE` actions. So, when defining `PUT`, `PATCH` or `DELETE` routes that are called from an HTML form, you will need to add a hidden `_method` field to the form. The value sent with the `_method` field will be used as the HTTP request method:
+
+```php
+<input type="hidden" name="_method" value="PUT" />
+```
+
+### Route groups
+
+Route groups allow you to share route attributes, such as middleware or namespaces, across a large number of routes without needing to define those attributes on each individual route. Shared attributes are specified in an array format as the first parameter to the `Route::group` method.
+
+#### Middleware
+
+To assign middleware to all routes within a group, you may use the middleware key in the group attribute array. Middleware are executed in the order they are listed in the array:
+
+```php
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function ()    {
+        // Uses Auth Middleware
+    });
+
+    Router::get('/user/profile', function () {
+        // Uses Auth Middleware
+    });
+});
+```
+
