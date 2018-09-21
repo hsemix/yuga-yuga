@@ -35,9 +35,23 @@ class UserController extends BaseController
 
 The `get / all` methods return a `Yuga\Database\Elegant\Collection` containing the results where each result is an instance of the PHP `stdClass` object. You may access each column's value by accessing the column as a property of the object:
 
-```text
+```php
 foreach ($users as $user) {
     echo $user->name;
 }
+```
+
+**Retrieving A Single Row / Column From A Table**
+
+If you just need to retrieve a single row from the database table, you can use the `first / last`methods. These methods will return a single `stdClass` object:
+
+```php
+// Retrieve the first record from the collection
+$user = DB::table('users')->where('username', 'hamnaj')->first();
+
+// Retrive the last record from the collection
+$user = DB::table('users')->where('username', 'hamnaj')->last();
+
+echo $user->name;
 ```
 
