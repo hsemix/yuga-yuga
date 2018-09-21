@@ -157,7 +157,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Uses Auth Middleware
     });
 
-    Router::get('/user/profile', function () {
+    Route::get('/user/profile', function () {
         // Uses Auth Middleware
     });
 });
