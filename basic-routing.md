@@ -163,3 +163,41 @@ Route::group(['middleware' => 'auth'], function () {
 });
 ```
 
+#### Namespaces
+
+Another common use-case for route groups is assigning the same PHP namespace to a group of controllers using the `namespace` parameter in the group array:
+
+**Note**
+
+Group namespaces will only be added to routes with relative callbacks. For example if your route has an absolute callback like `\App\Controllers\DashboardController@home`, the namespace from the route will not be prepended. To fix this you can make the callback relative by removing the `\` in the beginning of the callback.
+
+```php
+Route::group(['namespace' => 'Admin'], function () {
+    // Controllers Within The "App\Controllers\Admin" Namespace
+});
+```
+
+#### Sub domain-routing
+
+Route groups may also be used to handle sub-domain routing. Sub-domains may be assigned route parameters just like route URIs, allowing you to get a portion of the sub-domain for usage in your route or controller. The sub-domain may be specified using the `domain` keyword on the group attribute array:
+
+```php
+Route::group(['domain' => '{account}.myapp.com'], function () {
+    Route::get('/user/{id}', function ($account, $id) {
+        //
+    });
+});
+```
+
+#### Route prefixes
+
+The `prefix` group attribute may be used to prefix each route in the group with a given URI. For example, you may want to prefix all route URIs within the group with `admin`:
+
+```php
+Route::group(['prefix' => '/admin'], function () {
+    Route::get('/users', function ()    {
+        // Matches The "/admin/users" URL
+    });
+});
+```
+
