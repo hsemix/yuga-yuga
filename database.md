@@ -1,3 +1,9 @@
+---
+description: >-
+  Database interaction is key in any application and the way yuga makes it easy,
+  is credibly wonderful
+---
+
 # Database
 
 ## Introduction
