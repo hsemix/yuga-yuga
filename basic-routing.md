@@ -201,3 +201,11 @@ Route::group(['prefix' => '/admin'], function () {
 });
 ```
 
+#### CSRF Protection
+
+Any forms posting to `POST`, `PUT` or `DELETE` routes should include the CSRF-token. We strongly recommend that you create your enable CSRF-verification on your site. All you need to do in your forms is include this line 
+
+```php
+<input type="hidden" name="_token" value="<?=token()?>" />
+```
+
