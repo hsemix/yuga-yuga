@@ -55,3 +55,21 @@ $user = DB::table('users')->where('username', 'hamnaj')->last();
 echo $user->name;
 ```
 
+#### Aggregates
+
+The query builder also provides a variety of aggregate methods such as `count`, `max`, `min`, `avg`, and `sum`. You can call any of these methods after constructing your query:
+
+```php
+$users = DB::table('users')->count();
+
+$price = DB::table('orders')->max('price');
+```
+
+You can also combine these methods with other clauses:
+
+```php
+$price = DB::table('orders')
+                ->where('finalized', 1)
+                ->avg('price');
+```
+
