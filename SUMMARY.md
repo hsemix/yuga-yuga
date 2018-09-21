@@ -5,7 +5,7 @@
 * [Middleware](middleware.md)
 * [Controllers](controllers.md)
 * [Views](views.md)
-* [Database](database.md)
-* [Elegant](elegant.md)
-* [Query](query.md)
+* [Database](database/README.md)
+  * [Elegant](database/elegant.md)
+  * [Query](database/query.md)
 
