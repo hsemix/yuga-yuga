@@ -8,7 +8,7 @@ description: >-
 
 ## Introduction
 
-Yuga makes interacting with databases extremely simple across a variety of database backends using either raw SQL, the [fluent query builder](https://yuga-framework.gitbook.io/documentation/query), and the [Elegant ORM](https://yuga-framework.gitbook.io/documentation/database#elegant). Currently, Yuga supports three databases:
+Yuga makes interacting with databases extremely simple across a variety of database backends using either raw SQL, the [fluent query builder](https://yuga-framework.gitbook.io/documentation/database/query), and the [Elegant ORM](https://yuga-framework.gitbook.io/documentation/database/elegant). Currently, Yuga supports three databases:
 
 * MySQL
 * PostgreSQL
