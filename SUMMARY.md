@@ -1,10 +1,10 @@
 # Table of contents
 
 * [Yuga Framework](README.md)
-* [Routing](basic-routing/README.md)
-  * [Middleware](basic-routing/middleware.md)
-  * [Controllers](basic-routing/controllers.md)
-  * [Views](basic-routing/views.md)
+* [Routing](basic-routing.md)
+* [Middleware](middleware.md)
+* [Controllers](controllers.md)
+* [Views](views.md)
 * [Database](database.md)
 * [Elegant](elegant.md)
 * [Query](query.md)
