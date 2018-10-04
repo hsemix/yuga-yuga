@@ -75,10 +75,23 @@ $price = DB::table('orders')
 
 Simple query:  
 Get a user with the id of ```3``` . Note that ```null``` is returned when no match is found.  
-`$user = DB::table('users')->find(3);`
 
-  
+
+```php
+// This will return a php stdClass object
+$users = DB::table('users')->find(3);
+```
+
 Full queries:  
 Get all users with blue or red hair.  
-`$users = DB::table('users') ->where('hair_color', '=', 'blue')->orWhere('hair_color', '=', 'red') ->get();`
+
+
+```php
+$users = DB::table('users')
+                ->where('hair_color', '=', 'blue'))
+                ->orWhere('hair_color', '=', 'red')
+                ->get();
+```
+
+
 
