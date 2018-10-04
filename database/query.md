@@ -188,3 +188,39 @@ $query = DB::table('users')->select('username', 'email');
 $query = DB::table('users')->select(['username', 'email', 'fullname']);
 ```
 
+#### Select with sub-queries
+
+```php
+// first sub-query
+$firstSubQuery = DB::table('mails')
+                        ->select(DB::raw('COUNT(*)'));
+// send sub-query
+$secondSubQuery = DB::table('events')->select(DB::raw('COUNT(*)'));
+
+// Execute the query
+
+$count = DB::select(
+            DB::subQuery($firstSubQuery, 'column1'),
+            DB::subQuery($secondSubQuery, 'column2')
+         )->first();
+```
+
+Result:
+
+```sql
+SELECT 
+    (SELECT COUNT(*) FROM `mails`) AS column1, 
+    (SELECT COUNT(*) FROM `events`) AS column2
+LIMIT 1
+```
+
+You can also easily create a sub-query within the ```where``` clause as below:  
+
+
+```php
+$query = DB::table('posts')
+                ->where(DB::subQuery($subQuery), '<>', 'value');
+```
+
+
+
