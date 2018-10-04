@@ -70,7 +70,7 @@ You can also combine these methods with other clauses:
 ```php
 $price = DB::table('orders')
                 ->where('finalized', 1)
-                ->avg('price');
+                ->average('price');
 ```
 
 **Simple query**:  
@@ -143,5 +143,48 @@ $query->table('users')->alias('uu');
 SELECT *FROM `users` AS `uu` INNER JOIN `posts` ON `posts`.`user_id` = `uu`.`id`
 ```
 
+#### Multiple selects
 
+```php
+$query = DB::select([ 'mytable.myfield1', 'mytable.myfield2', 'another_table.myfield3' ]);
+```
+
+  
+**Using select method multiple times** ```select('a')->select('b')``` will also select **\`a\`** and ```b```. This can be useful if you want to do conditional selects \(within a PHP ```if```\).  
+
+
+#### Select distinct
+
+```php
+$query = DB::selectDistinct(['mytable.myfield1', 'mytable.myfield2']);
+```
+
+####  Select from query
+
+Items from another query can easily be selected as below:
+
+```php
+$subQuery = DB::table('countries');
+
+$query = DB::table(DB::subQuery($subQuery))->where('id', 2);
+```
+
+Output:
+
+```sql
+SELECT * FROM (SELECT * FROM `countries`) WHERE `id` = 2
+```
+
+#### Select single field
+
+This can be done as below:  
+
+
+```php
+$query = DB::table('users')->select('*');
+// or
+$query = DB::table('users')->select('username', 'email');
+// or 
+$query = DB::table('users')->select(['username', 'email', 'fullname']);
+```
 
