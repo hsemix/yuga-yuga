@@ -73,7 +73,7 @@ $price = DB::table('orders')
                 ->avg('price');
 ```
 
-Simple query:  
+**Simple query**:  
 Get a user with the id of ```3``` . Note that ```null``` is returned when no match is found.  
 
 
@@ -82,7 +82,7 @@ Get a user with the id of ```3``` . Note that ```null``` is returned when no mat
 $users = DB::table('users')->find(3);
 ```
 
-Full queries:  
+**Full queries**:  
 Get all users with blue or red hair.  
 
 
@@ -91,6 +91,56 @@ $users = DB::table('users')
                 ->where('hair_color', '=', 'blue'))
                 ->orWhere('hair_color', '=', 'red')
                 ->get();
+```
+
+### Select
+
+We recommend that you use ```table()``` method before every `query`, except raw ```query()```.  
+To select from more that one table, pass an array of your tables instead of a plain string.  
+But this is not a requirement as you can also pass in the different tables as below.
+
+**Method 1** \(array\)
+
+```php
+$results = DB::table(['users', 'posts'])
+                ->where('users.post_id', 'posts.id')
+                ->take(10)
+                ->get();
+```
+
+**Method 2** \(tables as arguments\)
+
+```php
+$results = DB::table('users', 'posts')
+                ->where('users.post_id', 'posts.id')
+                ->take(10)
+                ->get();
+```
+
+
+
+#### Table alias 
+
+You can easily set the table alias as below:
+
+```php
+$query = DB::table(['users' => 'u'])
+                ->join('posts', 'posts.user_id', '=', 'u.id');
+```
+
+You can change the alias anytime by using:  
+
+
+```php
+$query->alias('uu', 'users'); // uu for users
+// or
+$query->table('users')->alias('uu');
+```
+
+**Output**:
+
+```sql
+SELECT *FROM `users` AS `uu` INNER JOIN `posts` ON `posts`.`user_id` = `uu`.`id`
 ```
 
 
