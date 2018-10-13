@@ -15,7 +15,8 @@ abstract class App extends ViewModel
                         ->addCss(assets('yuga/bootstrap/css/bootstrap.min.css'))
                         ->addCss(assets('yuga/css/yuga.css'))
                         ->addJs(assets('yuga/js/jQuery/jquery-2.2.3.min.js'))
-                        ->addJs(assets('yuga/bootstrap/js/bootstrap.min.js'));
+                        ->addJs(assets('yuga/bootstrap/js/bootstrap.min.js'))
+                        ->addJs(assets('yuga/js/yuga.client.js'));
         $this->makeMenu();
     }
 

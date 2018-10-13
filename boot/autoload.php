@@ -30,4 +30,4 @@ $Load->parse();
 // Send the parsed .env file to the $_ENV variable
 $Load->toEnv();
 
-$loader->addPsr4(env('APP_NAMESPACE', 'App') . '\\', $_ENV['base_path'] . 'app/');
+$loader->addPsr4(env('APP_NAMESPACE', 'App') . '\\', $_ENV['base_path'] . '/app/');
