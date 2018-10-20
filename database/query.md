@@ -140,7 +140,7 @@ $query->table('users')->alias('uu');
 **Output**:
 
 ```sql
-SELECT *FROM `users` AS `uu` INNER JOIN `posts` ON `posts`.`user_id` = `uu`.`id`
+SELECT * FROM `users` AS `uu` INNER JOIN `posts` ON `posts`.`user_id` = `uu`.`id`
 ```
 
 #### Multiple selects
