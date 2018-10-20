@@ -31,8 +31,21 @@ return [
                 PDO::ATTR_PERSISTENT => true,
             ],
         ],
-        'postgress' => [
-            
+        'pgsql' => [
+            'driver'    => env('DATABASE_DRIVER', 'pgsql'), // Db driver
+            'host'      => env('DATABASE_HOST'),
+            'database'  => env('DATABASE_NAME'),
+            'username'  => env('DATABASE_USERNAME'),
+            'password'  => env('DATABASE_PASSWORD'),
+            'charset'   => env('DATABASE_CHARSET'), // Optional
+            'collation' => 'utf8_unicode_ci', // Optional
+            'prefix'    => env('DATABASE_PREFIX'), // Table prefix, optional
+            'schema'    => env('DATABASE_SCHEMA', 'public'),
+            'options'   => [ // PDO constructor options, optional
+                PDO::ATTR_TIMEOUT => 5,
+                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::ATTR_PERSISTENT => true,
+            ],
         ]
     ]
 ];
