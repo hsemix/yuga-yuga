@@ -19,10 +19,10 @@ return [
             'from' => 'noreply@yuga.com',
             'type' => 'smtp', //quite a few options we have [mail, sendmail or smtp]
             'smtp' => [
-                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_host' => '',
                 'smtp_port' => 465,
-                'smtp_user' => 'semix.hamidouh@gmail.com',
-                'smtp_pass' => 'ptyxrjkzovgkqipq',
+                'smtp_user' => '',
+                'smtp_pass' => '',
                 'mailtype'  => 'html',
                 'charset'   => 'iso-8859-1'
             ]
