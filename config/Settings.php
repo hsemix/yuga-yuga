@@ -16,7 +16,16 @@ return [
     ],
     'mailable' => [
         'Native' => [
-            'from' => 'noreply@yuga.com'
+            'from' => 'noreply@yuga.com',
+            'type' => 'smtp', //quite a few options we have [mail, sendmail or smtp]
+            'smtp' => [
+                'smtp_host' => 'ssl://smtp.googlemail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'semix.hamidouh@gmail.com',
+                'smtp_pass' => 'ptyxrjkzovgkqipq',
+                'mailtype'  => 'html',
+                'charset'   => 'iso-8859-1'
+            ]
         ],
         'PHPMailer' => [
             'auth' 			=> true, // authentication
