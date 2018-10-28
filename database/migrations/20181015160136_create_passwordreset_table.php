@@ -14,7 +14,7 @@ class CreatePasswordResetTable extends Migration
 	*/
 	public function up()
 	{
-		$this->schema->create('password_reset', function (Table $table) {
+		$this->schema->create('password_resets', function (Table $table) {
 			$table->column('id')->bigint()->primary()->increment();
 			$table->column('email')->string()->index();
             $table->column('token')->string();
@@ -31,7 +31,7 @@ class CreatePasswordResetTable extends Migration
 	*/
 	public function down()
 	{
-		$this->schema->dropIfExists('password_reset');
+		$this->schema->dropIfExists('password_resets');
 	}
 
 	/**

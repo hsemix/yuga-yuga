@@ -1,7 +1,7 @@
 <?php
 return [
     'migrate' => [
-        CreateUserTable::class,
+        CreateUsersTable::class,
         CreatePasswordResetTable::class,
     ],
     'seed' => [
