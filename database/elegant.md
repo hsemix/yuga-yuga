@@ -156,3 +156,79 @@ You may also call the `find` method with an array of primary keys, which will re
 $users = App\Models\User::find([1, 2, 3]);
 ```
 
+#### Retrieving Aggregates
+
+You may also use the `count`, `sum`, `max`, and other aggregate methods provided by the [query builder](https://yuga-framework.gitbook.io/documentation/database/query). These methods return the appropriate scalar value instead of a full model instance:
+
+```php
+$count = App\Models\User::where('active', 1)->count();
+
+$sum = App\Models\Users::where('active', 1)->sum('admins');
+```
+
+### [Inserting & Updating Models](https://laravel.com/docs/5.7/eloquent#inserting-and-updating-models)
+
+#### Inserts
+
+To create a new record in the database, create a new model instance, set attributes on the model, then call the `save` method:
+
+```php
+<?php
+
+namespace App\Controllers;
+
+use App\Models\User;
+use Yuga\Http\Request;
+
+class UsersController extends Controller
+{
+    /**
+     * Create a new Users instance.
+     *
+     * @param  Request  $request
+     * 
+     * @return Response
+     */
+    public function save(Request $request)
+    {
+        // This should be done in a ViewModel though
+
+        $user = new User;
+
+        $user->name = $request->get('name');
+
+        $user->save();
+    }
+}
+```
+
+In this example, we assign the `name` array key from the incoming HTTP request `get` method to the `name`attribute of the `App\Models\User` model instance. When we call the `save` method, a record will be inserted into the database. The `created_at` and `updated_at` timestamps will automatically be set when the `save` method is called, so there is no need to set them manually.
+
+#### Updates
+
+The `save` method may also be used to update models that already exist in the database. To update a model, you should retrieve it, set any attributes you wish to update, and then call the `save` method. Again, the `updated_at` timestamp will automatically be updated, so there is no need to manually set its value:
+
+```php
+$user = App\Models\User::find(1);
+
+$user->name = 'Hamnaj';
+
+$user->save();
+```
+
+**Mass Updates**
+
+Updates can also be performed against any number of models that match a given query. In this example, all users that are `active` and have a `duty role` as true:
+
+```php
+$users = App\Models\User::where('active', 1)
+          ->where('on_duty', false)
+          ->update(['on_duty' => 1]);
+// or 
+$users = App\Models\User::where('active', 1)
+          ->where('on_duty', false)
+          ->save(['on_duty' => 1]);
+```
+
+The `update / save` method expects an array of column and value pairs representing the columns that should be updated.
+
