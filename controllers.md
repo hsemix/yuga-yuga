@@ -17,6 +17,7 @@ Below is an example of a basic controller class. Note that the controller extend
 
 ```php
 <?php
+
 namespace App\Controllers;
 
 use Yuga\Controllers\Controller;
@@ -58,6 +59,7 @@ The Yuga [service container](https://yuga-framework.gitbook.io/documentation/pro
 namespace App\Controllers;
 
 use App\Models\Posts;
+use Yuga\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -90,6 +92,7 @@ In addition to constructor injection, you can also type-hint dependencies on you
 namespace App\Controllers;
 
 use Yuga\Http\Request;
+use Yuga\Controllers\Controller;
 
 class UserController extends Controller
 {
