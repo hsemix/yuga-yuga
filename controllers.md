@@ -7,8 +7,6 @@ description: >-
 
 # Controllers
 
-
-
 Controllers are stored in the `app/Controllers` directory by default but in yuga, everything is configurable which means you can put them in `app/AnyFolder` and map them to the appropriate namespace
 
 ### [Basic Controllers](https://laravel.com/docs/5.7/controllers#basic-controllers)
@@ -37,5 +35,11 @@ class UserController extends Controller
         return new UsersViewModel($id);
     }
 }
+```
+
+The route that corresponds to this controller is as below:
+
+```php
+Route::get('user/{id}', 'UserController@show');
 ```
 
