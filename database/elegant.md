@@ -117,3 +117,24 @@ foreach ($users as $user) {
 }
 ```
 
+**Adding Additional Constraints**
+
+The Elegant `all` method will return all of the results in the model's table. Since each Elegant model serves as a [query builder](https://yuga-framework.gitbook.io/documentation/database/query), you may also add constraints to queries, and then use the `get / all`method to retrieve the results:
+
+```php
+$users = App\User::where('active', 1)
+               ->orderBy('name', 'desc')
+               ->take(10)
+               ->get();
+// or 
+
+$users = App\User::where('active', 1)
+               ->orderBy('name', 'desc')
+               ->take(10)
+               ->all();
+```
+
+{% hint style="info" %}
+ Since Elegant models are improved query builders, you may want to review all of the methods available on the [query builder](https://yuga-framework.gitbook.io/documentation/database/query). You may use any of these methods in your Elegant queries.
+{% endhint %}
+
