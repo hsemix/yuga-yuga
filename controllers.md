@@ -127,12 +127,12 @@ class UserController extends Controller
      * Save a given user.
      *
      * @param  Request  $request
-     * @param  string  $id
+     * @param  int $id
      * @return Response
      */
     public function save(Request $request, $id)
     {
-        //
+        // your code
     }
 }
 
@@ -152,13 +152,13 @@ class UserController extends Controller
     /**
      * Save a given user.
      *
-     * @param  Request  $request
-     * @param  string  $id
+     * @param  int $id
+     * @param  Request $request
      * @return Response
      */
     public function save($id, Request $request)
     {
-        //
+        // your code
     }
 }
 
@@ -167,4 +167,34 @@ class UserController extends Controller
 {% hint style="info" %}
 Route parameters are injected into route callbacks / controllers based on their names in the Route defined, the order of getting them in callback / controller does not matter.
 {% endhint %}
+
+#### Creating Controllers using yuga console command
+
+Controllers can be created using the `php yuga make:controller` controller
+
+i.e `php yuga make:controller UsersController` would produce the following scaffold:
+
+```php
+<?php
+
+namespace App\Controllers;
+
+use Yuga\Http\Request;
+use Yuga\Http\Response;
+use Yuga\Http\Redirect;
+
+class UsersController extends Controller
+{
+    /**
+     * Create a new UsersController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+}
+
+```
 
