@@ -68,3 +68,44 @@ class CheckAdmins implements IMiddleware
 }
 ```
 
+#### Assigning Middleware To Routes
+
+If you would like to assign middleware to specific routes, you should first assign the middleware a key in your `config/AppMiddleware` file. By default, the file comes with an array with only one middleware that comes with yuga, feel free to add as many as you want.
+
+You can avoid this by using the command `php yuga make:middleware TestMiddleware` and yuga will make `TestMiddleware` lower cased without the word middleware and will push it to `config/AppMiddleware` array for you.
+
+```php
+// Within config/AppMiddleware.php
+
+return [
+    'guest' => \App\Middleware\RedirectIfAuthenticated::class,
+];
+```
+
+ Once the middleware has been defined in the config/AppMiddleware array, you can use on a given route as below:
+
+```php
+// Single middleware
+Route::get('/users', ['middleware' => 'test', 'UsersController']);
+// An array of middleware
+Route::get('/users', [
+    'middleware' => [
+        'middleware1', 
+        'middleware2',
+    ], 
+    'UsersController'
+]);
+
+// Middleware on a group of routes
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', function ()    {
+        // Uses Auth Middleware
+    });
+​
+    Route::get('/user/profile', function () {
+        // Uses Auth Middleware
+    });
+});
+```
+
