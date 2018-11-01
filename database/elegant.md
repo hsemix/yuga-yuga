@@ -300,9 +300,19 @@ You may also come across situations where you want to update an existing model o
 ```php
 // If there's a user whose name is jakat update the other field(age)
 // If no matching model exists, create one.
-$user = App\Models\User::updateOrCreate([
-    'name' => 'Oakland', 
-    'age' => 30
-]);
+$user = App\Models\User::updateOrCreate(
+    ['name' => 'Jakat',],
+    ['age' => 30,]
+);
+```
+
+### [Deleting Models](https://yuga-framework.gitbook.io/documentation/elegant#deleting-models)
+
+To delete a model, call the `delete` method on a model instance:
+
+```php
+$user = App\Models\User::find(1);
+
+$user->delete();
 ```
 
