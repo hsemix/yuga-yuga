@@ -43,3 +43,7 @@ The route that corresponds to this controller is as below:
 Route::get('user/{id}', 'UserController@show');
 ```
 
+{% hint style="info" %}
+Controllers are not **required** to extend the base **controller** but if you don't, you will not have access to important methods like middleware and many others.
+{% endhint %}
+
