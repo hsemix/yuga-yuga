@@ -27,6 +27,7 @@ This command will place a new `CheckRoles` class within your `app/Middleware` di
 <?php
 namespace App\Middleware;
 
+use Auth;
 use Closure;
 use Yuga\Http\Request;
 use Yuga\Application\Application;
@@ -59,6 +60,9 @@ class CheckAdmins implements IMiddleware
     public function run(Request $request, Closure $next)
     {
         // Write you code for checking if the user's role is admin here
+        if (!Auth::user()->isAdmin()) {
+           return redirect('home');
+        }
         return $next($request);
     }
 }
