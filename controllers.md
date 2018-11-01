@@ -47,3 +47,124 @@ Route::get('user/{id}', 'UserController@show');
 Controllers are not **required** to extend the base **controller** but if you don't, you will not have access to important methods like middleware and many others.
 {% endhint %}
 
+### [Dependency Injection & Controllers](https://laravel.com/docs/5.7/controllers#dependency-injection-and-controllers)
+
+**Constructor Injection**
+
+The Yuga [service container](https://yuga-framework.gitbook.io/documentation/providers) is used to resolve all Yuga controllers. As a result, you are able to type-hint any dependencies your controller may need in its constructor. The declared dependencies will automatically be resolved and injected into the controller instance:
+
+```php
+<?php
+namespace App\Controllers;
+
+use App\Models\Posts;
+
+class UserController extends Controller
+{
+    /**
+     * The posts model instance.
+     */
+    protected $posts;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param  Post $post
+     * @return void
+     */
+    public function __construct(Post $post)
+    {
+        $this->posts = $post;
+    }
+}
+```
+
+You can also type-hint any Yuga classes and interfaces If the container can resolve them, you can type-hint them. 
+
+**Method Injection**
+
+In addition to constructor injection, you can also type-hint dependencies on your controller's methods. A common use-case for method injection is injecting the `Yuga\Http\Request`instance into your controller methods:
+
+```php
+<?php
+namespace App\Controllers;
+
+use Yuga\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * Store a new post.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function save(Request $request)
+    {
+        $name = $request->get('name');
+    }
+}
+```
+
+If your controller method is also expecting input from a route parameter, list your route arguments any where with other dependencies, remember, Route parameters are injected into route callbacks / controllers based on their names in the Route defined, the order of getting them in callback / controller does not matter. For example, if your route is defined like so:
+
+```php
+Route::put('user/{id}', 'UserController@save');
+```
+
+You may still type-hint the `Yuga\Http\Request` and access your `id` parameter by defining your controller method as follows:
+
+```php
+<?php
+
+namespace App\Controllers;
+
+use Yuga\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * Save a given user.
+     *
+     * @param  Request  $request
+     * @param  string  $id
+     * @return Response
+     */
+    public function save(Request $request, $id)
+    {
+        //
+    }
+}
+
+```
+
+OR, like so:
+
+```php
+<?php
+
+namespace App\Controllers;
+
+use Yuga\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * Save a given user.
+     *
+     * @param  Request  $request
+     * @param  string  $id
+     * @return Response
+     */
+    public function save($id, Request $request)
+    {
+        //
+    }
+}
+
+```
+
+{% hint style="info" %}
+Route parameters are injected into route callbacks / controllers based on their names in the Route defined, the order of getting them in callback / controller does not matter.
+{% endhint %}
+
