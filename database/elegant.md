@@ -232,3 +232,33 @@ $users = App\Models\User::where('active', 1)
 
 The `update / save` method expects an array of column and value pairs representing the columns that should be updated.
 
+#### Mass Assignment
+
+You may also use the model's `__contruct` method to save a new model in a single line. The inserted model instance will be returned to you from the method. However, before doing so, you will need to specify either a `fillable` 
+
+```php
+<?php
+
+namespace App\Models;
+
+use Yuga\Database\Elegant\Model;
+
+class User extends Model
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name'];
+}
+```
+
+Once we have made the attributes mass assignable, we can use the `__constuct` method to insert a new record in the database. The model is returned to you instantly:
+
+```php
+$user = (new App\Models\User(['name' => 'Hamnaj']))->save();
+```
+
+
+
