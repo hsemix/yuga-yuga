@@ -25,7 +25,7 @@ Now, let's look at an example `User` model, which we will use to retrieve and st
 ```php
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Yuga\Database\Elegant\Model;
 
@@ -42,7 +42,7 @@ Note that we did not tell Elegant which table to use for our `User` model. By co
 ```php
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Yuga\Database\Elegant\Model;
 
@@ -68,7 +68,7 @@ By default, Elegant expects `created_at` and `updated_at` columns to exist on yo
 ```php
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Yuga\Database\Elegant\Model;
 
@@ -90,7 +90,7 @@ If you wish to just rename the fields from being `$created_at` for new records a
 ```php
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Yuga\Database\Elegant\Model;
 
@@ -110,7 +110,7 @@ Once you have created a model and its associated database table, you are ready t
 ```php
 <?php
 
-$users= App\User::all();
+$users= App\Models\User::all();
 
 foreach ($users as $user) {
     echo $user->name;
@@ -122,13 +122,13 @@ foreach ($users as $user) {
 The Elegant `all` method will return all of the results in the model's table. Since each Elegant model serves as a [query builder](https://yuga-framework.gitbook.io/documentation/database/query), you may also add constraints to queries, and then use the `get / all`method to retrieve the results:
 
 ```php
-$users = App\User::where('active', 1)
+$users = App\Models\User::where('active', 1)
                ->orderBy('name', 'desc')
                ->take(10)
                ->get();
 // or 
 
-$users = App\User::where('active', 1)
+$users = App\Models\User::where('active', 1)
                ->orderBy('name', 'desc')
                ->take(10)
                ->all();
