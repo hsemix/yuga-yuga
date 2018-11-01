@@ -85,8 +85,6 @@ class User extends Model
 
 If you wish to just rename the fields from being `$created_at` for new records and `$updated_at` for updated records, you can do this by:
 
-
-
 ```php
 <?php
 
@@ -100,8 +98,6 @@ class User extends Model
     const UPDATED_AT = 'date_updated';
 }
 ```
-
-
 
 ### [Retrieving Models](https://yuga-framework.gitbook.io/documentation/database/elegant#retrieving-models)
 
@@ -137,4 +133,26 @@ $users = App\Models\User::where('active', 1)
 {% hint style="info" %}
  Since Elegant models are improved query builders, you may want to review all of the methods available on the [query builder](https://yuga-framework.gitbook.io/documentation/database/query). You may use any of these methods in your Elegant queries.
 {% endhint %}
+
+### [Retrieving Single Models / Aggregates](https://laravel.com/docs/5.7/eloquent#retrieving-single-models)
+
+In addition to retrieving all of the records for a given table, you can also retrieve single records using `find` or `first` or `last` . Instead of returning a collection of models, these methods return a single model instance:
+
+```php
+// Retrieve a model by its primary key...
+$users = App\Models\User::find(1);
+
+// Retrieve the first model matching the query constraints...
+$users = App\Models\User::where('active', 1)->first();
+
+// Retrieve the last model matching the query constraints...
+$users = App\Models\User::where('active', 1)->last();
+
+```
+
+You may also call the `find` method with an array of primary keys, which will return a collection of the matching records:
+
+```php
+$users = App\Models\User::find([1, 2, 3]);
+```
 
