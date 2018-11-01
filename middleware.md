@@ -13,3 +13,54 @@ Of course, additional middleware can be written to perform a variety of tasks be
 
 There are several middleware that come with yuga-framework, including middleware for authentication and CSRF protection. App middlew middleware are located in the `app/Middleware` directory, but the ones that come with the framework are distributed across the entire framework depending on what they accomplish.
 
+## Defining Middleware
+
+To create a new middleware, use the `make:middleware` command:
+
+```text
+php yuga make:middleware CheckRoles
+```
+
+This command will place a new `CheckRoles` class within your `app/Middleware` directory. In this middleware, we will only allow access to the route if the user accessing this route is`admin`. Otherwise, we will redirect the users back to the `home` URI:
+
+```php
+<?php
+namespace App\Middleware;
+
+use Closure;
+use Yuga\Http\Request;
+use Yuga\Application\Application;
+use Yuga\Http\Middleware\IMiddleware;
+
+class CheckAdmins implements IMiddleware
+{
+    /**
+     * @var \Yuga\Application\Application | null
+     */
+    protected $app;
+    /**
+     * -------------------------------------------------------------------------
+     * Inject any objects (in the contructor) you want to use in this middleware
+     * We will worry about instantiating them for you
+     * -------------------------------------------------------------------------
+     */
+    public function __construct(Application $app)
+    {
+        $this->app      = $app;
+    }
+
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Yuga\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function run(Request $request, Closure $next)
+    {
+        // Write you code for checking if the user's role is admin here
+        return $next($request);
+    }
+}
+```
+
