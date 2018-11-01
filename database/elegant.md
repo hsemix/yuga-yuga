@@ -260,5 +260,49 @@ Once we have made the attributes mass assignable, we can use the `__constuct` me
 $user = (new App\Models\User(['name' => 'Hamnaj']))->save();
 ```
 
+#### Other Creation Methods
 
+**create/ firstOrCreate/ firstOrNew**
+
+There are three other methods you may use to create models by mass assigning attributes:  `create`, `firstOrCreate` and `firstOrNew`. The `firstOrCreate` method will attempt to locate a database record using the given column / value pairs. If the model can not be found in the database, a record will be inserted with the attributes from the first parameter, along with those in the optional second parameter.
+
+The `firstOrNew` method, like `firstOrCreate` will attempt to locate a record in the database matching the given attributes. However, if a model is not found, a new model instance will be returned. Note that the model returned by `firstOrNew` has not yet been persisted to the database. You will need to call `save` manually to persist it:
+
+```php
+// Retrieve user by name, or create it if it doesn't exist...
+$user = App\Models\User::firstOrCreate(['name' => 'Hamnaj']);
+
+// Retrieve user by name, or create it with the name and admin attributes...
+$user = App\Models\User::firstOrCreate([
+    'name' => 'Hamnaj', 
+    'admin' => 1
+]);
+
+// Retrieve by name, or instantiate...
+$user = App\Models\User::firstOrNew(['name' => 'Hamnaj']);
+
+// Retrieve by name, or instantiate with the name and admin attributes...
+$user = App\Models\User::firstOrNew([
+    'name' => 'Hamnaj', 
+    'admin' => 1
+]);
+
+// Create a user with the create method
+$user = App\Models\User::create([
+    'name' => 'Hamnaj'
+]);
+```
+
+**updateOrCreate**
+
+You may also come across situations where you want to update an existing model or create a new model if none exists. Elegant provides an `updateOrCreate` method to do this in one step. Like the `firstOrCreate` method, `updateOrCreate` persists the model, so there's no need to call `save()`:
+
+```php
+// If there's a user whose name is jakat update the other field(age)
+// If no matching model exists, create one.
+$user = App\Models\User::updateOrCreate([
+    'name' => 'Oakland', 
+    'age' => 30
+]);
+```
 
