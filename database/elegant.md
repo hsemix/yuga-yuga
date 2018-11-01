@@ -70,7 +70,7 @@ By default, Elegant expects `created_at` and `updated_at` columns to exist on yo
 
 namespace App;
 
-use Yuga\Database\Eloquent\Model;
+use Yuga\Database\Elegant\Model;
 
 class User extends Model
 {
@@ -92,7 +92,7 @@ If you wish to just rename the fields from being `$created_at` for new records a
 
 namespace App;
 
-use Yuga\Database\Eloquent\Model;
+use Yuga\Database\Elegant\Model;
 
 class User extends Model
 {
