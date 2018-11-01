@@ -57,3 +57,63 @@ class User extends Model
 }
 ```
 
+**Primary Keys**
+
+Elegant will also assume that each table has a primary key column named `id`. You may define a protected `$primaryKey` property to override this convention.
+
+**Timestamps**
+
+By default, Elegant expects `created_at` and `updated_at` columns to exist on your tables. If you do not wish to have these columns automatically managed by Elegant, set the `$timestamps` property on your model to `false`:
+
+```php
+<?php
+
+namespace App;
+
+use Yuga\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * Shows if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+}
+```
+
+If you wish to just rename the fields from being `$created_at` for new records and `$updated_at` for updated records, you can do this by:
+
+
+
+```php
+<?php
+
+namespace App;
+
+use Yuga\Database\Eloquent\Model;
+
+class User extends Model
+{
+    const CREATED_AT = 'date_created';
+    const UPDATED_AT = 'date_updated';
+}
+```
+
+
+
+### [Retrieving Models](https://yuga-framework.gitbook.io/documentation/database/elegant#retrieving-models)
+
+Once you have created a model and its associated database table, you are ready to start retrieving data from your database. Take it that each Elegant model is an improved [query builder](https://yuga-framework.gitbook.io/documentation/database/query) allowing you to fluently query the database table associated with the model. For example:
+
+```php
+<?php
+
+$users= App\User::all();
+
+foreach ($users as $user) {
+    echo $user->name;
+}
+```
+
