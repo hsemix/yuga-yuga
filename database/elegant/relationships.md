@@ -22,7 +22,7 @@ use Yuga\Database\Elegant\Model;
 class User extends Model
 {
     /**
-     * Get the phone related with the user.
+     * Get the email related with the user.
      */
     public function email()
     {
