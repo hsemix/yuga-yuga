@@ -6,6 +6,7 @@
 * [Controllers](controllers.md)
 * [Views](views.md)
 * [Database](database/README.md)
-  * [Elegant](database/elegant.md)
+  * [Elegant](database/elegant/README.md)
+    * [Relationships](database/elegant/relationships.md)
   * [Query](database/query.md)
 
