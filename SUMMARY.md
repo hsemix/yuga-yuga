@@ -8,5 +8,6 @@
 * [Database](database/README.md)
   * [Elegant](database/elegant/README.md)
     * [Relationships](database/elegant/relationships.md)
+    * [Complex queries](database/elegant/complex-queries.md)
   * [Query](database/query.md)
 
