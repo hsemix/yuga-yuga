@@ -197,7 +197,7 @@ class Comment extends Model
 Once the relationship has been defined, we can retrieve the `Post` model for a `Comment` by accessing the `post` "dynamic property":
 
 ```php
-$comment = App\Comment::find(1);
+$comment = App\Models\Comment::find(1);
 
 echo $comment->post->title;
 ```
@@ -227,6 +227,92 @@ public function post()
 ```
 
 ## \`\`[`Many to Many`](https://yuga-framework.gitbook.io/documentation/database/elegant/relationships#many-to-many)\`\`
+
+#### Many To Many
+
+Many-to-many relations are slightly more complicated than `hasOne` and `hasMany`relationships. An example of such a relationship is a user with many roles, where the roles are also shared by other users. For example, many users may have the role of "Admin". To define this relationship, three database tables are needed: `users`, `roles`, and `role_user`. The `role_user` table is derived from the alphabetical order of the related model names, and contains the `user_id` and `role_id` columns.
+
+Many-to-many relationships are defined by writing a method that returns the result of the `belongsToMany` method. For example, let's define the `roles` method on our `User` model:
+
+{% code-tabs %}
+{% code-tabs-item title="app/Models/User.php" %}
+```php
+<?php
+
+namespace App\Models;
+
+use Yuga\Database\Elegant\Model;
+
+class User extends Model
+{
+    /**
+     * The roles that belong to the user.
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+Once the relationship is defined, you may access the user's roles using the `roles` dynamic property:
+
+```php
+$user = App\Models\User::find(1);
+
+foreach ($user->roles as $role) {
+    //
+}
+```
+
+Of course, like all other relationship types, you may call the `roles` method to continue chaining query constraints onto the relationship:
+
+```php
+$roles = App\Models\User::find(1)->roles()->orderBy('name')->get();
+```
+
+As mentioned previously, to determine the table name of the relationship's joining table, Eloquent will join the two related model names in alphabetical order. However, you are free to override this convention. You may do so by passing a second argument to the `belongsToMany`method:
+
+```php
+return $this->belongsToMany(Role::class, 'role_user');
+```
+
+In addition to customizing the name of the joining table, you may also customize the column names of the keys on the table by passing additional arguments to the `belongsToMany` method. The third argument is the foreign key name of the model on which you are defining the relationship, while the fourth argument is the foreign key name of the model that you are joining to:
+
+```php
+return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
+```
+
+**Defining The Inverse Of The Relationship**
+
+To define the inverse of a many-to-many relationship, you place another call to `belongsToMany`on your related model. To continue our user roles example, let's define the `users` method on the `Role` model:
+
+{% code-tabs %}
+{% code-tabs-item title="app/Models/Role.php" %}
+```php
+<?php
+
+namespace App\Models;
+
+use Yuga\Database\Elegant\Model;
+
+class Role extends Model
+{
+    /**
+     * The users that belong to the role.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+As you can see, the relationship is defined exactly the same as its `User` counterpart, with the exception of referencing the `App\Models\User` model. Since we're reusing the `belongsToMany` method, all of the usual table and key customization options are available when defining the inverse of many-to-many relationships.
 
 ## \`\`[`Polymorphic Relations`](https://yuga-framework.gitbook.io/documentation/database/elegant/relationships#polymorphic-relations)\`\`
 
