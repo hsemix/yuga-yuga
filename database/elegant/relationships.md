@@ -190,7 +190,7 @@ $comment = App\Comment::find(1);
 echo $comment->post->title;
 ```
 
-In the example above, Elegant will try to match the `post_id` from the `Comment` model to an `id` on the `Post` model. Eloquent determines the default foreign key name by examining the name of the relationship method and suffixing the method name with a `_` followed by the name of the primary key column. However, if the foreign key on the `Comment` model is not `post_id`, you may pass a custom key name as the second argument to the `belongsTo` method:
+In the example above, Elegant will try to match the `post_id` from the `Comment` model to an `id` on the `Post` model. Elegant determines the default foreign key name by examining the name of the relationship method and suffixing the method name with a `_` followed by the name of the primary key column. However, if the foreign key on the `Comment` model is not `post_id`, you may pass a custom key name as the second argument to the `belongsTo` method:
 
 ```php
 /**
@@ -198,7 +198,7 @@ In the example above, Elegant will try to match the `post_id` from the `Comment`
  */
 public function post()
 {
-    return $this->belongsTo('App\Post', 'foreign_key');
+    return $this->belongsTo(Post::class, 'foreign_key');
 }
 ```
 
