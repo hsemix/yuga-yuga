@@ -367,3 +367,53 @@ $users->delete();
 
 will delete all those users permanently from the table.
 
+#### Querying Soft Deleted Models
+
+**Including Soft Deleted Models**
+
+As noted above, soft deleted models will automatically be excluded from query results. However, you may force soft deleted models to appear in a result set using the `withTrashed`method on the query:
+
+```php
+$users = App\Models\User::withTrashed()
+                ->where('account_type_id', 1)
+                ->get();
+```
+
+The `withTrashed` method may also be used on a relationship query:
+
+```php
+$user->posts()->withTrashed()->get();
+```
+
+**Retrieving Only Soft Deleted Models**
+
+The `onlyTrashed` method will retrieve **only** soft deleted models:
+
+```php
+$users = App\Models\User::onlyTrashed()
+                ->where('account_type_id', 1)
+                ->get();
+```
+
+**Restoring Soft Deleted Models**
+
+Sometimes you may wish to "un-delete" a soft deleted model. To restore a soft deleted model into an active state, use the `restore` method on a model instance:
+
+```php
+$users->restore();
+```
+
+You may also use the `restore` method in a query to quickly restore multiple models. Again, like other "mass" operations, this will not fire any model events for the models that are restored:
+
+```php
+$restored = App\Models\User::withTrashed()
+                ->where('account_type_id', 1)
+                ->restore();
+```
+
+Like the `withTrashed` method, the `restore` method may also be used on relationships:
+
+```php
+$user->posts()->restore();
+```
+
