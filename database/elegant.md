@@ -134,6 +134,32 @@ $users = App\Models\User::where('active', 1)
  Since Elegant models are improved query builders, you may want to review all of the methods available on the [query builder](https://yuga-framework.gitbook.io/documentation/database/query). You may use any of these methods in your Elegant queries.
 {% endhint %}
 
+#### Collections
+
+For Elegant methods like `all` and `get` which retrieve multiple results, an instance of `Yuga\Database\Elegant\Collection` will be returned. The `Collection` class provides a variety of helpful methods for working with your Elegant results:
+
+You can loop over the collection like an array:
+
+```php
+foreach ($users as $user) {
+    echo $user->name;
+}
+```
+
+#### Chunking Results
+
+If you need to process thousands of Elegant results, use the `chunk` method. The `chunk`method will retrieve a "chunk" of Elegant models, putting them to a given `Closure` for processing. Using the `chunk` method will conserve memory when working with large result sets:
+
+```php
+User::chunk(200, function ($users) {
+    foreach ($users as $user) {
+        //your code
+    }
+});
+```
+
+The first argument passed to the method is the number of records you wish to receive per "chunk". The Closure passed as the second argument will be called for each chunk that is retrieved from the database. A database query will be executed to retrieve each chunk of records passed to the Closure.
+
 ### [Retrieving Single Models / Aggregates](https://laravel.com/docs/5.7/eloquent#retrieving-single-models)
 
 In addition to retrieving all of the records for a given table, you can also retrieve single records using `find` or `first` or `last` . Instead of returning a collection of models, these methods return a single model instance:
@@ -315,4 +341,29 @@ $user = App\Models\User::find(1);
 
 $user->delete();
 ```
+
+By default Elegant will `soft delete` database results when the `delete` method is called on a `model`. To delete a result or a set of results \(force delete\), a `\Yuga\Database\Elegant\Traits\PermanentDeleteTrait` trait must be used in a model, once that trait is used, 
+
+```php
+<?php
+// In your model class
+namespace App\Models;
+
+use Yuga\Database\Elegant\Model;
+use Yuga\Database\Elegant\Traits\PermanentDeleteTrait as PermanentDelete;
+
+class User extends Model
+{
+    use PermanetDelete;
+}
+
+
+
+// In your controller or view-model
+$users = App\Models\User::where('salary', '>', 10000);
+
+$users->delete();
+```
+
+will delete all those users permanently from the table.
 
