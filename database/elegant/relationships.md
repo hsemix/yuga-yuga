@@ -12,6 +12,8 @@ description: >-
 
 A one-to-one relationship is a very basic relation. For example, a `User` model might be `related` with one `Email`. To define this relationship, we place a `email` method on the `User`model. The `email` method should call the `hasOne` method and return its result:
 
+{% code-tabs %}
+{% code-tabs-item title="app/Models/User.php" %}
 ```php
 <?php
 
@@ -30,6 +32,8 @@ class User extends Model
     }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 The first argument passed to the `hasOne` method is the name of the related model. Once the relationship is defined, you can retrieve the related record using Elegant's dynamic properties. Dynamic properties allow you to access relationship methods as if they were properties defined on the model:
 
@@ -53,6 +57,8 @@ return $this->hasOne(Email::class, 'foreign_key', 'local_key');
 
 So, we can access the `Email` model from our `User`. Now, let's define a relationship on the `Email` model that will let us access the `User` that owns the phone. We can define the inverse of a `hasOne` relationship using the `belongsTo` method:
 
+{% code-tabs %}
+{% code-tabs-item title="app/Models/Email.php" %}
 ```php
 <?php
 
@@ -71,6 +77,8 @@ class Email extends Model
     }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 In the example above, Elegant will try to match the `user_id` from the `Email` model to an `id`on the `User` model. Elegant determines the default foreign key name by examining the name of the relationship method and suffixing the method name with `_id`. However, if the foreign key on the `Email` model is not `user_id`, you may pass a custom key name as the second argument to the `belongsTo` method:
 
@@ -108,6 +116,8 @@ Note that we have not specified the namespace of the **Email::class**`, This is 
 
 A "one-to-many" relationship is used to define relationships where a single model owns any amount of other models. For example, a blog post may have an infinite number of comments. Like all other `Elegant` relationships, one-to-many relationships are defined by placing a function on your Elegant model:
 
+{% code-tabs %}
+{% code-tabs-item title="app/Models/Post.php" %}
 ```php
 <?php
 
@@ -126,6 +136,8 @@ class Post extends Model
     }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
 Remember, Elegant will automatically determine the proper foreign key column on the `Comment` model. By convention, Elegant will take the "snake case" name of the owning model and suffix it with `_id`. So, for this example, Elegant will assume the foreign key on the `Comment` model is `post_id`.
 
