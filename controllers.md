@@ -21,7 +21,7 @@ Below is an example of a basic controller class. Note that the controller extend
 namespace App\Controllers;
 
 use Yuga\Controllers\Controller;
-use App\Middleware\UsersViewModel;
+use App\ViewModels\UsersViewModel;
 
 class UserController extends Controller
 {
