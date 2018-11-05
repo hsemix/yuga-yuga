@@ -379,7 +379,7 @@ $users = App\Models\User::withTrashed()
                 ->get();
 ```
 
-The `withTrashed` method may also be used on a relationship query:
+The `withTrashed` method may also be used on a [relationship](https://yuga-framework.gitbook.io/documentation/database/elegant/relationships) query:
 
 ```php
 $user->posts()->withTrashed()->get();
@@ -411,7 +411,7 @@ $restored = App\Models\User::withTrashed()
                 ->restore();
 ```
 
-Like the `withTrashed` method, the `restore` method may also be used on relationships:
+Like the `withTrashed` method, the `restore` method may also be used on [relationships](https://yuga-framework.gitbook.io/documentation/database/elegant/relationships):
 
 ```php
 $user->posts()->restore();
