@@ -273,7 +273,7 @@ Of course, like all other relationship types, you may call the `roles` method to
 $roles = App\Models\User::find(1)->roles()->orderBy('name')->get();
 ```
 
-As mentioned previously, to determine the table name of the relationship's joining table, Eloquent will join the two related model names in alphabetical order. However, you are free to override this convention. You may do so by passing a second argument to the `belongsToMany`method:
+As mentioned previously, to determine the table name of the relationship's joining table, Elegant will join the two related model names in alphabetical order. However, you are free to override this convention. You may do so by passing a second argument to the `belongsToMany`method:
 
 ```php
 return $this->belongsToMany(Role::class, 'role_user');
