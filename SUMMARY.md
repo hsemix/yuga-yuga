@@ -1,29 +1,25 @@
-<<<<<<< HEAD
 # Table of contents
 
 * [Yuga Framework](README.md)
 * [Routing](basic-routing.md)
 * [Middleware](middleware.md)
 * [Controllers](controllers.md)
-* [Views](views.md)
+* [ViewModels](views.md)
 * [Database](database/README.md)
-  * [Elegant](database/elegant.md)
+  * [Elegant](database-1/elegant/README.md)
+    * [Relationships](database-1/elegant/relationships.md)
+    * [Complex queries](database-1/elegant/complex-queries.md)
   * [Query](database/query.md)
+* [Yuga Framework](readme.md)
+* [Routing](basic-routing-1.md)
+* [Middleware](middleware-1.md)
+* [Controllers](controllers-1.md)
+* [Views](views-1/README.md)
+  * [MVC](views-1/mvc.md)
+  * [MVVM](views-1/mvvm.md)
+* [Database](database-1/README.md)
+  * [Elegant](database-1/elegant/README.md)
+    * [Relationships](database-1/elegant/relationships.md)
+    * [Complex queries](database-1/elegant/complex-queries.md)
+  * [Query](database-1/query.md)
 
-=======
-# Table of contents
-
-* [Yuga Framework](README.md)
-* [Routing](basic-routing.md)
-* [Middleware](middleware.md)
-* [Controllers](controllers.md)
-* [Views](views/README.md)
-  * [MVC](views/mvc.md)
-  * [MVVM](views/mvvm.md)
-* [Database](database/README.md)
-  * [Elegant](database/elegant/README.md)
-    * [Relationships](database/elegant/relationships.md)
-    * [Complex queries](database/elegant/complex-queries.md)
-  * [Query](database/query.md)
-
->>>>>>> 2c47e771248575a7d9b51cea353f7458085d1f98

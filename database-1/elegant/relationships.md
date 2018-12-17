@@ -1,9 +1,3 @@
----
-description: >-
-  Elegant gives you an elegant where of defining and querying database table
-  relationships using Models
----
-
 # Relationships
 
 ## Defining Relationships
