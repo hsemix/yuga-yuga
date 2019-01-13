@@ -1,12 +1,8 @@
 # Middleware
 
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-
 ## Middleware
 
-### =======
-
-description: &gt;- Middleware provide a convenient mechanism for filtering HTTP requests entering your application. i.e, Yuga includes a middleware that verifies whether the
+Middleware provide a convenient mechanism for filtering HTTP requests entering your application. i.e, Yuga includes a middleware that verifies whether the
 
 ### user of your application is authenticated.
 
@@ -114,5 +110,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 ```
 
-> > > > > > > 2c47e771248575a7d9b51cea353f7458085d1f98
+
 
