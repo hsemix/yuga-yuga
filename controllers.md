@@ -1,12 +1,8 @@
 # Controllers
 
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-
 ## Controllers
 
-### =======
-
-description: &gt;- Instead of defining all of your request handling logic as Closures in routes/web.php file, you may want to organise them using Controller classes.
+Instead of defining all of your request handling logic as Closures in routes/web.php file, you may want to organise them using Controller classes.
 
 ### Controllers can group related request handling logic.
 
@@ -202,6 +198,4 @@ class UsersController extends Controller
     }
 }
 ```
-
-> > > > > > > 2c47e771248575a7d9b51cea353f7458085d1f98
 
