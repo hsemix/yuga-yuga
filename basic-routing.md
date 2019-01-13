@@ -1,10 +1,6 @@
 # Routing
 
-### &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-
-description: &gt;- Building routes for your application is one way of linking pages through out
-
-### the entire application. We have quite a few ways you can do that as follows
+### Building routes for your application is one way of linking pages through out the entire application. We have quite a few ways you can do that as follows
 
 ## Routing
 
@@ -445,5 +441,5 @@ Also note that the order of the routes is `/controller/method/arg1/arg2/args....
 
 Also note that for this to work, the route makes an assumption of the controller living in `app/Controllers` directory and so with a namespace of `App\Controllers`. It also adds the word controller to the URI therefore `/home` is mapped to `HomeController`.
 
-> > > > > > > 2c47e771248575a7d9b51cea353f7458085d1f98
+
 
