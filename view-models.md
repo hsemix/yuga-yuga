@@ -167,8 +167,6 @@ ViewModels can be created using the `php yuga make:viewmodel` command
 
 i.e `php yuga make:viewmodel UserViewModel` would produce the following scaffold:
 
-
-
 {% code-tabs %}
 {% code-tabs-item title="app/ViewModels/UserViewModel.php" %}
 ```php
