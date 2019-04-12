@@ -27,12 +27,10 @@ Below is an example of a basic ViewModel class. Note that the ViewModel extends 
 ```php
 namespace App\ViewModels;
 
-use Yuga\Models\ElegantModel;
-
 class UserViewModel extends App
 {
     /**
-     * Create a new MyViewModel ViewModel instance.
+     * Create a new UserViewModel ViewModel instance.
      *
      * @return void
      */
@@ -129,4 +127,37 @@ Route::get('add-users', App\ViewModels\UserViewModel::class);
 {% endcode-tabs %}
 
 #### [Dependency Injection & ViewModels](http://yuga-framework.gitbook.io/documentation/view-models)
+
+**Constructor Injection**
+
+The Yuga [service container](https://yuga-framework.gitbook.io/documentation/providers) is used to resolve all Yuga controllers. As a result, you are able to type-hint any dependencies your ViewModel may need in its constructor. The declared dependencies will automatically be resolved and injected into the ViewModel instance:
+
+{% code-tabs %}
+{% code-tabs-item title="app/ViewModels/UserViewModel.php" %}
+```php
+namespace App\ViewModels;
+
+use App\Models\User;
+
+class UserViewModel extends App
+{
+    /**
+     * The posts model instance.
+     */
+    protected $user;
+
+    /**
+     * Create a new UserViewModel ViewModel instance.
+     *
+     * @param  User $user
+     * @return void
+     */
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 

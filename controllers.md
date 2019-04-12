@@ -10,7 +10,7 @@ Instead of defining all of your request handling logic as Closures in routes/web
 
 Controllers are stored in the `app/Controllers` directory by default but in yuga, everything is configurable which means you can put them in `app/AnyFolder` and map them to the appropriate namespace
 
-#### [Basic Controllers](https://laravel.com/docs/5.7/controllers#basic-controllers)
+#### [Basic Controllers](https://yuga-framework.gitbook.io/documentation/controllers#basic-controllers)
 
 **Defining Controllers**
 
@@ -49,7 +49,7 @@ Route::get('user/{id}', 'UserController@show');
 Controllers are not **required** to extend the base **controller** but if you don't, you will not have access to important methods like middleware and many others.
 {% endhint %}
 
-#### [Dependency Injection & Controllers](https://laravel.com/docs/5.7/controllers#dependency-injection-and-controllers)
+#### [Dependency Injection & Controllers](https://yuga-framework.gitbook.io/documentation/controllers#dependency-injection)
 
 **Constructor Injection**
 
