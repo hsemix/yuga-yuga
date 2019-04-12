@@ -142,7 +142,7 @@ use App\Models\User;
 class UserViewModel extends App
 {
     /**
-     * The posts model instance.
+     * The user model instance.
      */
     protected $user;
 
