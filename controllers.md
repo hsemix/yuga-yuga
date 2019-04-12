@@ -172,7 +172,7 @@ Route parameters are injected into route callbacks / controllers based on their 
 
 **Creating Controllers using yuga console command**
 
-Controllers can be created using the `php yuga make:controller` controller
+Controllers can be created using the `php yuga make:controller` command
 
 i.e `php yuga make:controller UsersController` would produce the following scaffold:
 
