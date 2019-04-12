@@ -4,7 +4,7 @@
 * [Routing](basic-routing.md)
 * [Middleware](middleware.md)
 * [Controllers](controllers.md)
-* [ViewModels](views.md)
+* [ViewModels](view-models.md)
 * [Database](database/README.md)
   * [Elegant](database-1/elegant/README.md)
     * [Relationships](database-1/elegant/relationships.md)
