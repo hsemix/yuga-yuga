@@ -161,3 +161,56 @@ class UserViewModel extends App
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
+**Creating Controllers using yuga console command**
+
+ViewModels can be created using the `php yuga make:viewmodel` command
+
+i.e `php yuga make:viewmodel UserViewModel` would produce the following scaffold:
+
+
+
+{% code-tabs %}
+{% code-tabs-item title="app/ViewModels/UserViewModel.php" %}
+```php
+namespace App\ViewModels;
+
+class UserViewModel extends App
+{
+    /**
+     * Create a new UserViewModel ViewModel instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Handle any form data that has been submited
+     */
+    public function onPost()
+    {
+        
+    }
+
+    /**
+     * Load or / manupulate data when its a get request
+     */
+    public function onGet()
+    {
+        
+    }
+
+    /**
+     * Load or / manupulate data before the page loads and feed it to the page
+     */
+    public function onLoad()
+    {
+        
+    }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
