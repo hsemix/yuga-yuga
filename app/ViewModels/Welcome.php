@@ -9,7 +9,6 @@ class Welcome extends App
     {
         parent::__construct();
         $this->appName = $appName;
-        //$this->setTemplate(null);
     }
     public function getAppName()
     {
