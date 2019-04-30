@@ -23,5 +23,5 @@
             "App\\": "app/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev-master"
 }
