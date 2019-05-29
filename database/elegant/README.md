@@ -158,7 +158,7 @@ User::chunk(200, function ($users) {
 
 The first argument passed to the method is the number of records you wish to receive per "chunk". The Closure passed as the second argument will be called for each chunk that is retrieved from the database. A database query will be executed to retrieve each chunk of records passed to the Closure.
 
-#### [Retrieving Single Models / Aggregates](https://laravel.com/docs/5.7/eloquent#retrieving-single-models) <a id="markdown-header-retrieving-single-models-aggregates"></a>
+#### Retrieving Single Models / Aggregates <a id="markdown-header-retrieving-single-models-aggregates"></a>
 
 In addition to retrieving all of the records for a given table, you can also retrieve single records using `find`or `first` or `last` . Instead of returning a collection of models, these methods return a single model instance:
 
@@ -189,7 +189,7 @@ $count = App\Models\User::where('active', 1)->count();
 $sum = App\Models\Users::where('active', 1)->sum('admins');
 ```
 
-#### [Inserting & Updating Models](https://laravel.com/docs/5.7/eloquent#inserting-and-updating-models) <a id="markdown-header-inserting-updating-models"></a>
+#### Inserting & Updating Models <a id="markdown-header-inserting-updating-models"></a>
 
 **Inserts**
 
