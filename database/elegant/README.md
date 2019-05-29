@@ -130,7 +130,7 @@ $users = App\Models\User::where('active', 1)
                ->all();
 ```
 
-{% hint style="info" %} Since Elegant models are improved query builders, you may want to review all of the methods available on the [query builder](https://yuga-framework.gitbook.io/documentation/database/query). You may use any of these methods in your Elegant queries. {% endhint %}
+> Since Elegant models are improved query builders, you may want to review all of the methods available on the [query builder](https://yuga-framework.gitbook.io/documentation/database/query). You may use any of these methods in your Elegant queries.
 
 **Collections**
 
