@@ -98,9 +98,9 @@ public function user()
 }
 ```
 
-Note that we have not specified the namespace of the **Email::class**`, This is because Elegant tries to resolve model namespaces according to the namespace in which model that has called a relation is. In this case` **`\App\Models.`** `This behaviour can be change ofcourse by passing the fully qualified class name. i.e.` **`\App\MyModels\Email::class`** `or`
+Note that we have not specified the namespace of the **Email::class**`This is because Elegant tries to resolve model namespaces according to the namespace in which model that has called a relation is. In this case` **`\App\Models.`** `This behaviour can be change ofcourse by passing the fully qualified class name. i.e.` **`\App\MyModels\Email::class`** `or`
 
-**`'\App\MyModels\Email'`** {% endhint %}
+**`'\App\MyModels\Email'`**
 
 ### \`\`[`One to Many`](https://yuga-framework.gitbook.io/documentation/database/elegant/relationships#one-to-many)\`\` <a id="markdown-header-9696one-to-many9696"></a>
 
