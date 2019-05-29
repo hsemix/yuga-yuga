@@ -10,6 +10,7 @@
     * [Relationships](database/elegant/relationships.md)
     * [Complex queries](database/elegant/complex-queries.md)
   * [Query](database/query.md)
+  * [Migrations](database/migrations.md)
 * [Events](events/README.md)
   * [Event Classes](events/event-classes.md)
   * [Event Handlers](events/event-handlers.md)
