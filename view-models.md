@@ -242,8 +242,7 @@ Example of a view \(`My.php`\)
                         </div>
                     </div>
                     <div class="clearfix"></div><br />
-                    <?=$
-this->showErrors()?>
+                    <?=$this->showErrors()?>
                 <?=$this->form()->end() ?>
             </div>
         </div>
