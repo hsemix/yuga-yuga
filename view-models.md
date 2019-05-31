@@ -161,7 +161,7 @@ class UserViewModel extends App
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-**Creating Controllers using yuga console command**
+**Creating ViewModels using yuga console command**
 
 ViewModels can be created using the `php yuga make:viewmodel` command
 
