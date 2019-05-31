@@ -212,3 +212,121 @@ class UserViewModel extends App
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
+## Model binding to the **ViewModel**
+
+Think of this as an easier way of mapping every form value to an appropriate Object attribute or property. In **`yuga`**, this works like magic.  
+ When a form is submitted, the **`ViewModel`** looks for the bound Model from the scope and every form field a property on that **`Model`** and finally tries to run a `validator` to every field on the form to make sure that every form field is not empty for starters.
+
+### Basic Structure
+
+When a form is submitted and it is a post request method, the **`onPost`** method is run and so this is where your code for form manipulation should reside.
+
+Example of a view \(`My.php`\)
+
+{% code-tabs %}
+{% code-tabs-item title="My.php" %}
+```php
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 main-users-form-border">
+        <div class="panel panel-default">
+            <div class="panel-heading">Users</div>
+            <div class="panel-body">
+                <?=$this->form()->start('user', 'post')->addClass('yuga-form'); ?>
+                    <?=$this->showSuccessMessage()?>
+                    <?=$this->validatedField('first_name')?>
+                    <?=$this->validatedField('last_name')?>
+                    
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                            <?=$this->form()->button('Save', 'submit')->addClass('btn btn-primary'); ?>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div><br />
+                    <?=$
+this->showErrors()?>
+                <?=$this->form()->end() ?>
+            </div>
+        </div>
+    </div>
+</div>
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+The code behind to the above view is below: \(`MyViewModel.php`\)
+
+{% code-tabs %}
+{% code-tabs-item title="MyViewModel.php" %}
+```php
+<?php
+
+namespace App\ViewModels;
+
+use Yuga\Models\ElegantModel;
+
+class MyViewModel extends App
+{
+    /**
+     * Create a new MyViewModel ViewModel instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Handle any form data that has been submited
+     */
+    public function onPost($model)
+    {
+        
+    }
+
+    /**
+     * Load or / manupulate data when its a get request
+     */
+    public function onGet()
+    {
+        
+    }
+
+    /**
+     * Load or / manupulate data before the page loads and feed it to the page
+     */
+    public function onLoad()
+    {
+        
+    }
+}
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+The route corresponding to the above `ViewModel` could be any route but Let’s say that its:
+
+{% code-tabs %}
+{% code-tabs-item title="routes/web.php" %}
+```php
+Route::all("/my-view-model", App\ViewModels\MyViewModel::class);
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+The `model` in parameter in the **`onPost`** method in the **`MyViewModel`** **`ViewModel`**, is the bound model to the form inside the **`My.php`** html file. It can only be an instance of **`Yuga\Database\Elegant\Model`** for it to work well with the **`ViewModel`**.
+
+By default, the bound model is **`Yuga\Models\ElegantModel`**
+
+```php
+/**
+ * Handle any form data that has been submited
+ */
+public function onPost($model)
+{
+    $model->save();
+}
+```
+
+Like the code above, you just have to call the save method to the model since it’s an instance of **`Yuga\Database\Elegant\Model`,** When the save method is called, It will try to **`insert`** or **`update`** the database table depending on the bound **`model`**
+
