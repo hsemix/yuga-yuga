@@ -16,4 +16,5 @@ return [
     'Hash'                  => \Yuga\Hash\Hash::class,
     'Redirect'              => \Yuga\Http\Redirect::class,
     'NotFoundHttpException' => \Yuga\Route\Exceptions\NotFoundHttpException::class,
+    'Storage'               => \Yuga\Logger\Storage::class,
 ];
