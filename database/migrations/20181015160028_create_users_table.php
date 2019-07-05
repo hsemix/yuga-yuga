@@ -16,8 +16,8 @@ class CreateUsersTable extends Migration
 	{
 		$this->schema->create('users', function (Table $table) {
 			$table->column('id')->bigint()->primary()->increment();
-			$table->column('email')->string(255)->index();
-			$table->column('username')->string(255)->index();
+			$table->column('email')->string(255)->nullable()->index();
+			$table->column('username')->string(255)->nullable()->index();
             $table->column('fullname')->string(255)->nullable()->index();
 			$table->column('password')->string(255)->index();
 			$table->column('user_code')->string(255)->nullable()->index();
