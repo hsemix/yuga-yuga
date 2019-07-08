@@ -23,7 +23,7 @@ Whenever a model is accessed, whether by querying the database for records or in
 
 Each of the events is a method that you have to implement in your model as follows:
 
-Let's say that you want to return all fullnames in upper case of users that exist in the database after you have selected them, this is how you would do it.
+Let's say that you want to return all **fullnames** in **upper case** of users that exist in the database after you have selected them, this is how you would do it.
 
 ```php
 <?php
