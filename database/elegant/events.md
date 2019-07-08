@@ -34,9 +34,9 @@ use Yuga\Models\ElegantModel as Elegant;
 class User extends Elegant
 {
     /**
-    * @param \Yuga\Database\Elegant\Builder $query
-    * @param \Yuga\Database\Elegant\Collection $results
-    */
+     * @param \Yuga\Database\Elegant\Builder $query
+     * @param \Yuga\Database\Elegant\Collection $results
+     */
     public function onSelected($query, $results)
     {
         return $results->map(function ($user) {
