@@ -9,7 +9,7 @@ description: >-
 ### Writing Complex database queries with elegant
 
 You can join tables, query from the same table as many times as you want using only the **`orm`** without having to write a custom query, much as it is possible to write a custom query using the `Elegant ORM`.  
-The purpose of the `ORM` is to limit if not get rid of custom query use cases, without compromising perform and ease of development.
+The purpose of the `ORM` is to limit if not get rid of custom query use cases, without compromising performance and ease of development.
 
 An example is:
 
