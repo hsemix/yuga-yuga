@@ -130,7 +130,7 @@ Route::get('add-users', App\ViewModels\UserViewModel::class);
 
 **Constructor Injection**
 
-The Yuga [service container](https://yuga-framework.gitbook.io/documentation/providers) is used to resolve all Yuga controllers. As a result, you are able to type-hint any dependencies your ViewModel may need in its constructor. The declared dependencies will automatically be resolved and injected into the ViewModel instance:
+The Yuga [service container](https://yuga-framework.gitbook.io/documentation/providers) is used to resolve all Yuga ViewModels. As a result, you are able to type-hint any dependencies your ViewModel may need in its constructor. The declared dependencies will automatically be resolved and injected into the ViewModel instance:
 
 {% code-tabs %}
 {% code-tabs-item title="app/ViewModels/UserViewModel.php" %}
@@ -328,4 +328,6 @@ public function onPost($model)
 ```
 
 Like the code above, you just have to call the save method to the model since it’s an instance of **`Yuga\Database\Elegant\Model`,** When the save method is called, It will try to **`insert`** or **`update`** the database table depending on the bound **`model`**
+
+
 
