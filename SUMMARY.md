@@ -9,6 +9,7 @@
   * [Elegant](database/elegant/README.md)
     * [Relationships](database/elegant/relationships.md)
     * [Complex queries](database/elegant/complex-queries.md)
+    * [Events](database/elegant/events.md)
   * [Query](database/query.md)
   * [Migrations](database/migrations.md)
 * [Events](events/README.md)
