@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "yuga/framework": "dev-master",
+        "yuga/framework": "^2.1",
         "phpunit/phpunit": "^7.4"
     },
     "autoload": {
