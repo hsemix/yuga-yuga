@@ -218,7 +218,7 @@ Some developers that are used to the usual mvc route-to-controller mapping i.e `
 (new App\Controllers\HomeController)->index();
 ```
 
-Yuga-frame supports that too but you must note that this comes turned off by default. It can be turned on by finding the `environment/.env` file and looking for `MATCH_ROUTES_TO_CONTROLLERS` and changing its value to true.
+Yuga-framework supports that too but you must note that this comes turned off by default. It can be turned on by finding the `environment/.env` file and looking for `MATCH_ROUTES_TO_CONTROLLERS` and changing its value to true.
 
 Also note that the order of the routes is `/controller/method/arg1/arg2/args....whatever` When no controller is supplied in the `URI`, the router will default to `HomeController` and when no method is given, then it will default to `HomeController@index`, this can be changed by locating `ROUTE_DEFAULTS` variable in the `environment/.env` file and supplying it with a `json` string of the format
 
@@ -226,7 +226,7 @@ Also note that the order of the routes is `/controller/method/arg1/arg2/args....
 {"controller" : "Home", "method" : "index"}
 ```
 
-Also note that for this to work, the route makes an assumption of the controller living in `app/Controllers` directory and so with a namespace of `App\Controllers`. It also adds the word controller to the URI therefore `/home` is mapped to `HomeController`.
+Also note that for this to work, the router makes an assumption of the controller living in `app/Controllers` directory and so with a namespace of `App\Controllers`. It also adds the word controller to the URI therefore `/home` is mapped to `HomeController`.
 
 
 
