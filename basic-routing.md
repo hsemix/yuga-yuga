@@ -209,7 +209,7 @@ Any forms posting to `POST`, `PUT` or `DELETE` routes should include the CSRF-to
 <input type="hidden" name="_token" value="<?=csrf_token()?>" />
 ```
 
-#### Mapping Routes to Controllers
+#### Implicit Routing \(Mapping Routes to Controllers\)
 
 Some developers that are used to the usual mvc route-to-controller mapping i.e `http://localhost:8000/home` would map to
 
