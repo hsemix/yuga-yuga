@@ -10,7 +10,7 @@ The most basic Yuga routes accept a URI and a `Callback`, providing a very simpl
 
 ```php
 Route::get('hello', function () {
-    echo 'Hello World';
+    return 'Hello World';
 });
 ```
 
@@ -53,7 +53,7 @@ When ever you need to get sections of the URI within your route, this approach m
 
 ```php
 Route::get('post/{id}', function ($id) {
-    echo 'Post with id: '.$id;
+    return 'Post with id: ' . $id;
 });
 ```
 
@@ -73,11 +73,11 @@ Sometimes you may need to specify a route parameter, but make its presence optio
 
 ```php
 Route::get('user/{name?}', function ($name = null) {
-    echo $name;
+    return $name;
 });
 
 Route::get('user/{name?}', function ($name = 'Hamnaj') {
-    echo $name;
+    return $name;
 });
 ```
 
