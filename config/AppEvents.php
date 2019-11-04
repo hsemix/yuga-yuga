@@ -1,4 +1,4 @@
-<?php
+  <?php
 /**
  * Register all your app's events here
  * In the form of 
