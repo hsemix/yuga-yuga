@@ -44,7 +44,9 @@ When defining a child view, we typically use the Hax `@extends` directive to spe
 
 @extends('layouts.layout')
 
-@section('title', 'Page Title')
+@section('title') 
+    Page Title 
+@endsection
 
 @section('nav-bar')
     @parent
