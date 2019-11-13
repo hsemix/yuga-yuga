@@ -54,7 +54,7 @@ When defining a child view, we typically use the Hax `@extends` directive to spe
     <p>This is appended to the master nav-bar.</p>
 @endsection
 
-@section('content')
+@section('main')
     <p>This is my body content.</p>
 @endsection
 ```
