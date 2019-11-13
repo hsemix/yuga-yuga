@@ -217,6 +217,55 @@ class UserViewModel extends App
 Think of this as an easier way of mapping every form value to an appropriate Object attribute or property. In **`yuga`**, this works like magic.  
  When a form is submitted, the **`ViewModel`** looks for the bound Model from the scope and every form field a property on that **`Model`** and finally tries to run a `validator` to every field on the form to make sure that every form field is not empty for starters.
 
+The default bound model is `\Yuga\Models\ElegantModel::class` But of course the table that is bound to this model is `elegant_models` which basically doesn't make any sense for every form, so how do we bind a model to a form, Well, there're two ways of doing this, 
+
+* You may skip binding to the form yourself and instead set a table to be bound to the `ElegantModel` class, this is done as below:  `$this->setTable("my_table");` inside of the view-model's constructor.
+* Or you can bind any other model you would like to use instead of `ElegantModel` as below:
+
+```php
+<?php
+
+namespace App\ViewModels;
+
+class UserViewModel extends App
+{
+    /**
+     * Create a new UserViewModel ViewModel instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Handle any form data that has been submited
+     */
+    public function onPost()
+    {
+        
+    }
+
+    /**
+     * Load or / manupulate data when its a get request
+     */
+    public function onGet()
+    {
+        
+    }
+
+    /**
+     * Load or / manupulate data before the page loads and feed it to the page
+     */
+    public function onLoad()
+    {
+        // this will change the bound model to what is defined
+        $this->setModel(['form' => new App\Models\User]);
+    }
+}
+```
+
 ### Basic Structure
 
 When a form is submitted and it is a post request method, the **`onPost`** method is run and so this is where your code for form manipulation should reside.
@@ -329,5 +378,44 @@ public function onPost($model)
 
 Like the code above, you just have to call the save method to the model since it’s an instance of **`Yuga\Database\Elegant\Model`,** When the save method is called, It will try to **`insert`** or **`update`** the database table depending on the bound **`model`**
 
+#### Form Validation
 
+Forms in view-models are validated automatically for required validation. This means, if a form is submitted to the server, the framework will look for the form, validate it \(making sure every field has a value basically\) then bind it to the appropriate model, then provide it as an Argument to the `onPost` method as below:
+
+```php
+/**
+ * Handle any form data that has been submited
+ * This $model argument is a valid Database Model
+ */
+public function onPost($model)
+{
+    
+}
+```
+
+You can just call the `save` method on the `$model` variable since `$model` is already a valid **Elegant Model**.  
+Sometimes you want to customize how the validation is done, well, **yuga** has your back already, you just have to do the following in your model
+
+```php
+<?php
+
+namespace App\Models;
+
+use Yuga\Database\Elegant\Model as Elegant;
+
+class User extends Elegant
+{
+    /**
+    * Use this method to run a customized validation on a model bound to a view-mode's form
+    */
+    public function validate(): ?array
+    {
+        return [
+            'email' => 'required|email|unique' // blah blah
+        ];
+    }
+}
+```
+
+If the above model is the one bound to the form, **yuga** will run its `validate` method instead of the default.
 
