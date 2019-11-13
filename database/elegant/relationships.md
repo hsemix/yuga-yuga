@@ -6,8 +6,8 @@
 
 A one-to-one relationship is a very basic relation. For example, a `User` model might be `related` with one `Email`. To define this relationship, we place a `email` method on the `User`model. The `email` method should call the `hasOne` method and return its result:
 
-{% code-tabs %}
-{% code-tabs-item title="app/Models/User.php" %}
+{% tabs %}
+{% tab title="app/Models/User.php" %}
 ```php
 <?php
 
@@ -26,8 +26,8 @@ class User extends Model
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 The first argument passed to the `hasOne` method is the name of the related model. Once the relationship is defined, you can retrieve the related record using Elegant's dynamic properties. Dynamic properties allow you to access relationship methods as if they were properties defined on the model:
 
@@ -51,8 +51,8 @@ return $this->hasOne(Email::class, 'foreign_key', 'local_key');
 
 So, we can access the `Email` model from our `User`. Now, let's define a relationship on the `Email` model that will let us access the `User` that owns the phone. We can define the inverse of a `hasOne` relationship using the `belongsTo` method:
 
-{% code-tabs %}
-{% code-tabs-item title="app/Models/Email.php" %}
+{% tabs %}
+{% tab title="app/Models/Email.php" %}
 ```php
 <?php
 
@@ -71,8 +71,8 @@ class Email extends Model
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 In the example above, Elegant will try to match the `user_id` from the `Email` model to an `id`on the `User`model. Elegant determines the default foreign key name by examining the name of the relationship method and suffixing the method name with `_id`. However, if the foreign key on the `Email` model is not `user_id`, you may pass a custom key name as the second argument to the `belongsTo` method:
 
@@ -108,8 +108,8 @@ Note that we have not specified the namespace of the **Email::class**`This is be
 
 A "one-to-many" relationship is used to define relationships where a single model owns any amount of other models. For example, a blog post may have an infinite number of comments. Like all other `Elegant`relationships, one-to-many relationships are defined by placing a function on your Elegant model:
 
-{% code-tabs %}
-{% code-tabs-item title="app/Models/Post.php" %}
+{% tabs %}
+{% tab title="app/Models/Post.php" %}
 ```php
 <?php
 
@@ -128,8 +128,8 @@ class Post extends Model
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Remember, Elegant will automatically determine the proper foreign key column on the `Comment` model. By convention, Elegant will take the "snake case" name of the owning model and suffix it with `_id`. So, for this example, Elegant will assume the foreign key on the `Comment` model is `post_id`.
 
@@ -163,8 +163,8 @@ return $this->hasMany(Comment::class, 'foreign_key', 'local_key');
 
 Now that we can access all of a post's comments, let's define a relationship to allow a comment to access its parent post. To define the inverse of a `hasMany` relationship, define a relationship function on the child model which calls the `belongsTo` method:
 
-{% code-tabs %}
-{% code-tabs-item title="app/Models/Comment.php" %}
+{% tabs %}
+{% tab title="app/Models/Comment.php" %}
 ```php
 <?php
 
@@ -183,8 +183,8 @@ class Comment extends Model
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Once the relationship has been defined, we can retrieve the `Post` model for a `Comment` by accessing the `post` "dynamic property":
 
@@ -226,8 +226,8 @@ Many-to-many relations are slightly more complicated than `hasOne` and `hasMany`
 
 Many-to-many relationships are defined by writing a method that returns the result of the `belongsToMany`method. For example, let's define the `roles` method on our `User` model:
 
-{% code-tabs %}
-{% code-tabs-item title="app/Models/User.php" %}
+{% tabs %}
+{% tab title="app/Models/User.php" %}
 ```php
 <?php
 
@@ -246,8 +246,8 @@ class User extends Model
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Once the relationship is defined, you may access the user's roles using the `roles` dynamic property:
 
@@ -281,8 +281,8 @@ return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
 
 To define the inverse of a many-to-many relationship, you place another call to `belongsToMany`on your related model. To continue our user roles example, let's define the `users` method on the `Role` model:
 
-{% code-tabs %}
-{% code-tabs-item title="app/Models/Role.php" %}
+{% tabs %}
+{% tab title="app/Models/Role.php" %}
 ```php
 <?php
 
@@ -301,8 +301,8 @@ class Role extends Model
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 As you can see, the relationship is defined exactly the same as its `User` counterpart, with the exception of referencing the `App\Models\User` model. Since we're reusing the `belongsToMany` method, all of the usual table and key customization options are available when defining the inverse of many-to-many relationships.
 

@@ -22,8 +22,8 @@ It has `automatic validation` of form fields. This can turn out to be a time sav
 
 Below is an example of a basic ViewModel class. Note that the ViewModel extends the base ViewModel class that comes with Yuga. The base class provides a few convenience methods such as the `onPost, onLoad, onGet` methods, which can be used whenever those events occur.
 
-{% code-tabs %}
-{% code-tabs-item title="app/ViewModels/UserViewModel.php" %}
+{% tabs %}
+{% tab title="app/ViewModels/UserViewModel.php" %}
 ```php
 namespace App\ViewModels;
 
@@ -64,13 +64,13 @@ class UserViewModel extends App
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 What's in the App class that the above class is extending? Let's find out
 
-{% code-tabs %}
-{% code-tabs-item title="app/ViewModels/App.php" %}
+{% tabs %}
+{% tab title="app/ViewModels/App.php" %}
 ```php
 namespace App\ViewModels;
 
@@ -113,18 +113,18 @@ abstract class App extends ViewModel
 }
 
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 The route that corresponds to this `UserViewModel` is as below:
 
-{% code-tabs %}
-{% code-tabs-item title="routes/web.php" %}
+{% tabs %}
+{% tab title="routes/web.php" %}
 ```php
 Route::get('add-users', App\ViewModels\UserViewModel::class);
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 #### [Dependency Injection & ViewModels](http://yuga-framework.gitbook.io/documentation/view-models)
 
@@ -132,8 +132,8 @@ Route::get('add-users', App\ViewModels\UserViewModel::class);
 
 The Yuga [service container](https://yuga-framework.gitbook.io/documentation/providers) is used to resolve all Yuga ViewModels. As a result, you are able to type-hint any dependencies your ViewModel may need in its constructor. The declared dependencies will automatically be resolved and injected into the ViewModel instance:
 
-{% code-tabs %}
-{% code-tabs-item title="app/ViewModels/UserViewModel.php" %}
+{% tabs %}
+{% tab title="app/ViewModels/UserViewModel.php" %}
 ```php
 namespace App\ViewModels;
 
@@ -158,8 +158,8 @@ class UserViewModel extends App
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 **Creating ViewModels using yuga console command**
 
@@ -167,8 +167,8 @@ ViewModels can be created using the `php yuga make:viewmodel` command
 
 i.e `php yuga make:viewmodel UserViewModel` would produce the following scaffold:
 
-{% code-tabs %}
-{% code-tabs-item title="app/ViewModels/UserViewModel.php" %}
+{% tabs %}
+{% tab title="app/ViewModels/UserViewModel.php" %}
 ```php
 namespace App\ViewModels;
 
@@ -209,8 +209,8 @@ class UserViewModel extends App
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Model binding to the **ViewModel**
 
@@ -223,8 +223,8 @@ When a form is submitted and it is a post request method, the **`onPost`** metho
 
 Example of a view \(`My.php`\)
 
-{% code-tabs %}
-{% code-tabs-item title="My.php" %}
+{% tabs %}
+{% tab title="My.php" %}
 ```php
 <div class="row">
     <div class="col-md-6 col-md-offset-3 main-users-form-border">
@@ -249,13 +249,13 @@ Example of a view \(`My.php`\)
     </div>
 </div>
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 The code behind to the above view is below: \(`MyViewModel.php`\)
 
-{% code-tabs %}
-{% code-tabs-item title="MyViewModel.php" %}
+{% tabs %}
+{% tab title="MyViewModel.php" %}
 ```php
 <?php
 
@@ -300,18 +300,18 @@ class MyViewModel extends App
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 The route corresponding to the above `ViewModel` could be any route but Let’s say that its:
 
-{% code-tabs %}
-{% code-tabs-item title="routes/web.php" %}
+{% tabs %}
+{% tab title="routes/web.php" %}
 ```php
 Route::all("/my-view-model", App\ViewModels\MyViewModel::class);
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 The `model` in parameter in the **`onPost`** method in the **`MyViewModel`** **`ViewModel`**, is the bound model to the form inside the **`My.php`** html file. It can only be an instance of **`Yuga\Database\Elegant\Model`** for it to work well with the **`ViewModel`**.
 
