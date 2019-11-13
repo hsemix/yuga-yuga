@@ -59,3 +59,59 @@ When defining a child view, we typically use the Hax `@extends` directive to spe
 @endsection
 ```
 
+### [Displaying Data](https://yuga-framework.gitbook.io/documentation/views/mvc/hax-templates#displaying-data)
+
+You can display data passed to your Hax views by wrapping the variable in curly braces. For example, given the following route:
+
+```php
+Route::get('hello', function () {
+    return view('details', ['name' => 'John Doe']);
+});
+```
+
+You can display the contents of the `name` variable like below:
+
+```php
+Hello, {{ $name }}.
+```
+
+### [Control Structures](https://yuga-framework.gitbook.io/documentation/views/mvc/hax-templates#control-structures)
+
+In addition to template inheritance and displaying data, Hax also provides convenient shortcuts for common PHP control structures, such as conditional statements and loops.
+
+#### [If Statements](https://yuga-framework.gitbook.io/documentation/views/mvc/hax-templates#if-statements)
+
+You may construct `if` statements using the `@if`, `@elseif`, `@else`, and `@endif` directives. These directives function identically to their PHP counterparts:
+
+```php
+@if (count($items) === 1)
+    You have one item!
+@elseif (count($items) > 1)
+    You have multiple items!
+@else
+    You don't have any items!
+@endif
+```
+
+#### [Loops](https://yuga-framework.gitbook.io/documentation/views/mvc/hax-templates#loops)
+
+In addition to conditional statements, Hax provides simple directives for working with PHP's loop structures. Each of these directives functions identically to their PHP counterparts:
+
+```php
+@for ($i = 0; $i < 10; $i++)
+    The index is {{ $i }}
+@endfor
+
+@foreach ($users as $user)
+    <p>This is user {{ $user->id }}</p>
+@endforeach
+
+@forelse ($users as $user)
+    <li>{{ $user->name }}</li>
+@endforelse
+
+@while (true)
+    <p>This loop will run forever.</p>
+@endwhile
+```
+
