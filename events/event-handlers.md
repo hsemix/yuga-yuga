@@ -11,23 +11,36 @@ description: >-
 ```php
 <?php
 
+/**
+ * This file is auto-generated.
+ */
+ 
 namespace App\Handlers;
 
 use Yuga\EventHandlers\HandlerInterface;
 
 class WhenAuthenticated implements HandlerInterface
 {
-    /**
-     * Event Handler Logic here
-     * 
-     * @param \Yuga\Events\Dispatcher $event
-     * 
-     * @return mixed
-     */
-    public function handle($event)
-    {
-        
-    }
+	/**
+	 * Event Handler Logic here
+	 * @param \Yuga\Events\Dispatcher $event
+	 * @return mixed
+	 */
+	public function handle($event)
+	{
+		return null;
+	}
+
+
+	/**
+	 * Your Event Handler Logic here
+	 * @param \Yuga\Events\Dispatcher $event
+	 * @return mixed
+	 */
+	public function isAuthentic($event)
+	{
+		return null;
+	}
 }
 ```
 
