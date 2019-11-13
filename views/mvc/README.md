@@ -65,5 +65,9 @@ When passing information in this format, the data should be an array with key / 
 
 ```php
 return view('hello')->with('name', 'Hamrad');
+
+// or 
+
+return view('hello')->with(['name' => 'Hamrad']);
 ```
 
