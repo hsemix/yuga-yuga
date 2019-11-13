@@ -8,3 +8,26 @@ description: Hax is a very simple but powerful template engine
 
 ### [Template Inheritance](https://yuga-framework.gitbook.io/documentation/views/mvc/hax-templates#template-inheritance)
 
+#### [Defining a Layout](https://yuga-framework.gitbook.io/documentation/views/mvc/hax-templates#defining-a-layout)
+
+ There're two primary advantages of using **Hax** i.e; _template inheritance_ and _sections_. To get started, let's take a look at a simple example. First, we will define a **default** page layout. Since most web applications maintain the same general layout across various pages, it's convenient to define this layout as a single **Hax** view:
+
+```php
+<!-- Saved in resources/views/layouts/layout.hax.php -->
+
+<html>
+    <head>
+        <title>Your App Name - @yield('title')</title>
+    </head>
+    <body>
+        @section('nav-bar')
+            This is the main nav bar.
+        @endsection
+
+        <div class="container">
+            @yield('main')
+        </div>
+    </body>
+</html>
+```
+
