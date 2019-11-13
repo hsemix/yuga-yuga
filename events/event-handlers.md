@@ -62,7 +62,7 @@ If the provided event name is a valid php class, the class will be injected in t
 For the following command
 
 ```bash
-php yuga event:handler WhenAuthenticated --event=Test --method=i
+php yuga event:handler WhenAuthenticated --event=UserAuthenticated --method=i
 sAuthentic
 ```
 
@@ -112,19 +112,19 @@ namespace App\Events;
 
 use Yuga\Events\Dispatcher\Dispatcher;
 
-class Test extends Dispatcher
+class UserAuthenticated extends Dispatcher
 {
     /**
      * Event Name
      */
-    protected $name = 'on:test';
+    protected $name = 'on:userauthenticated';
 }
 ```
 
 In which case you can no longer dispatch the event like so
 
 ```php
-event('on:test');
+event('on:userauthenticated');
 ```
 
 inside of any controller or view-model for that matter, this is because of the contract provided in the event handler, so we are left with the option of:
