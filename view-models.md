@@ -417,5 +417,5 @@ class User extends Elegant
 }
 ```
 
-If the above model is the one bound to the form, **yuga** will run its `validate` method instead of the default.
+If the above model is the one bound to the form, **yuga** will run its `validate` method instead of the default. Be warned though, when you run a custom validation, you will have to do it for every form field not just on the one field you want to customize.
 
