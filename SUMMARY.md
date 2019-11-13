@@ -17,6 +17,7 @@
   * [Event Handlers](events/event-handlers.md)
 * [Service Providers](service-providers.md)
 * [Views](views/README.md)
-  * [MVC](views/mvc.md)
+  * [MVC](views/mvc/README.md)
+    * [Hax Templates](views/mvc/hax-templates.md)
   * [MVVM](views/mvvm.md)
 
