@@ -45,5 +45,29 @@ Every View in a view-model extends a given layout by default and the layout mark
 </html>
 ```
 
-The `$this->renderBody()` section is where a basic view of a `view-model` is rendered, the layout can be structured in anyway as your application requires, since it's just markup, 
+The `$this->renderBody()` section is where a basic view of a `view-model` is rendered, the layout can be structured in anyway as your application requires, since it's just markup.
+
+#### How to include a given ViewModel in view \(with its data\)
+
+When it comes to managing view-model segments in your application, yuga is very smart, it will not include the layout on a given view-model if it's included in a view like so:
+
+```php
+<div>
+    <?=$this->viewModel(new App\ViewModels\Test)?>
+</div>
+```
+
+When the Test view-model is viewed on its own, it will include the default layout, but when included in a view as a view-model, the layout is left out.
+
+#### Including a given snippet \(not a view-model\)
+
+All that is needed in this case is as below:
+
+```php
+<div>
+    <?=$this->display('snippets.user', ['name' => 'Hamnaj'])?>
+</div>
+```
+
+The display method in a view will include a given snippet where ever it's saved and pass the data to that snippet since it's not a view-model on its own.
 
