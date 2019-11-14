@@ -11,5 +11,6 @@ Your own application, as well as all of Yuga's core services are booted via serv
 * Validation
 * Session
 * Events
+* Router
 * Console Application, to name but a few
 
