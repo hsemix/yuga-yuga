@@ -416,5 +416,37 @@ $user->posts()->restore();
 
 ### Query from Database Views
 
+Elegant models can not only query from database tables but also from views, see example below:
 
+```php
+$users = App\Models\User::fromView()->where('active', 1)
+               ->orderBy('name', 'desc')
+               ->take(10)
+               ->get();
+```
+
+The above code tells the `elegant service` to query from a view instead of a table, but what view is that exactly?, when the `fromView` method is given, `Elegant` will look for a view call **`users_view`** from the database and query from that instead of a normal table.  
+You can customize the `view_name` by providing a `protected` property in your model as below:
+
+```php
+<?php
+// In your model class
+namespace App\Models;
+
+use Yuga\Database\Elegant\Model;
+
+class User extends Model
+{
+    protected $view_name = 'my_users_view';
+}
+```
+
+Or more conveniently, you can provide the name of the view while querying, that way, your model is not bound to a given view but can change the view on demand as below:
+
+```php
+$users = App\Models\User::fromView('my_users_view')->where('active', 1)
+               ->orderBy('name', 'desc')
+               ->take(10)
+               ->get();
+```
 
