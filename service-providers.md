@@ -28,3 +28,34 @@ The Yuga command used to generate a service provider is as below:
 php yuga make:provider LogServiceProvider
 ```
 
+#### [The Load Method](https://yuga-framework.gitbook.io/documentation/service-providers#the-load-method)
+
+It's within the `load` method that things are bound to your application, "things" in this case could mean classes that you want your application to have on every single request or strings, it could pretty much be anything.
+
+The following code represents a basic service provider and how the `load` method must be used. All services are bound to the `$app` variable provided as an argument to the `load` method as below:
+
+```php
+<?php
+
+namespace App\Providers;
+
+use App\Models\User;
+use Yuga\Providers\ServiceProvider;
+use Yuga\Interfaces\Application\Application;
+
+class TestServiceProvider extends ServiceProvider
+{
+    /**
+     * Register bindings in the container.
+     *
+     * @return void
+     */
+    public function load($app)
+    {
+        $app->singleton('my-users', function ($app) {
+            return User::all();
+        });
+    }
+}
+```
+
