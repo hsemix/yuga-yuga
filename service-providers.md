@@ -50,7 +50,7 @@ class TestServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function load($app)
+    public function load(Application $app)
     {
         $app->singleton('my-users', function ($app) {
             return User::all();
