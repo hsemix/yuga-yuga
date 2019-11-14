@@ -59,3 +59,58 @@ class TestServiceProvider extends ServiceProvider
 }
 ```
 
+#### [Using Service Providers](https://yuga-framework.gitbook.io/documentation/service-providers#using-service-providers)
+
+Inside of your `controllers` or `view-models`, you can get the service that has been already registered in the following way:
+
+```php
+<?php
+
+// for a controller
+
+namespace App\Controllers;
+
+use Yuga\Controllers\Controller as BaseController;
+
+class UserController extends BaseController
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function users($app)
+    {
+        $users = $app->make('my-users');
+        
+        // or 
+        
+        $users = $app['my-users'];
+    }
+}
+```
+
+```php
+<?php
+
+//for a view-model
+
+namespace App\ViewModels;
+
+class Test extends App
+{
+
+    /**
+     * Load or / manupulate data when its a get request
+     */
+    public function onGet()
+    {
+        $users = app()->make('my-users');
+        
+        // or 
+        
+        $users = app()['my-users');
+    }
+}
+```
+
