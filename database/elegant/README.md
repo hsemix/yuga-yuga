@@ -419,7 +419,7 @@ $user->posts()->restore();
 Elegant models can not only query from database tables but also from views, see example below:
 
 ```php
-$users = App\Models\User::fromView()->where('active', 1)
+$users = App\Models\User::getFromView()->where('active', 1)
                ->orderBy('name', 'desc')
                ->take(10)
                ->get();
@@ -444,7 +444,7 @@ class User extends Model
 Or more conveniently, you can provide the name of the view while querying, that way, your model is not bound to a given view but can change the view on demand as below:
 
 ```php
-$users = App\Models\User::fromView('my_users_view')->where('active', 1)
+$users = App\Models\User::getFromView('my_users_view')->where('active', 1)
                ->orderBy('name', 'desc')
                ->take(10)
                ->get();
