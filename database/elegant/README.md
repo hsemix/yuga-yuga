@@ -414,3 +414,7 @@ Like the `withTrashed` method, the `restore` method may also be used on [relatio
 $user->posts()->restore();
 ```
 
+### Query from Database Views
+
+
+
