@@ -425,7 +425,7 @@ $users = App\Models\User::getFromView()->where('active', 1)
                ->get();
 ```
 
-The above code tells the `elegant service` to query from a view instead of a table, but what view is that exactly?, when the `fromView` method is given, `Elegant` will look for a view call **`users_view`** from the database and query from that instead of a normal table.  
+The above code tells the `elegant service` to query from a view instead of a table, but what view is that exactly?, when the `getFromView` method is given, `Elegant` will look for a view call **`users_view`** from the database and query from that instead of a normal table.  
 You can customize the `view_name` by providing a `protected` property in your model as below:
 
 ```php
