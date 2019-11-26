@@ -8,7 +8,7 @@ description: >-
 
 ### Triggering model events.
 
-Whenever a model is accessed, whether by querying the database for records or inserting a record or updating a record or event deleting a record, events are triggered, they include:
+Whenever a model is accessed, whether by querying the database for records or inserting a record or updating a record or even deleting a record, events are triggered, they include:
 
 * onCreating
 * onCreated
