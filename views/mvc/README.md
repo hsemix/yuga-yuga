@@ -71,3 +71,23 @@ return view('hello')->with('name', 'Hamrad');
 return view('hello')->with(['name' => 'Hamrad']);
 ```
 
+### Missing View Name
+
+The `view` helper method accepts an **optional** string in which case when given, it works as the name of the view you want to render. When not given, **yuga** will try to look for a view from within the `resources/views` directory with the name `Controller/Method.php` E.g
+
+```php
+// Controller
+
+namespace App\Controllers;
+
+class TestController
+{
+    public function method()
+    {
+        return view();
+    }
+}
+```
+
+In the above example, **Yuga** will look for `resources/views/Test/method.php` file, and once found, it will render it
+
