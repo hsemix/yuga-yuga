@@ -12,7 +12,7 @@ description: >-
 <?php
 
 /**
- * This file is auto-generated.
+ * This file was auto-generated.
  */
  
 namespace App\Handlers;
@@ -70,7 +70,7 @@ sAuthentic
 <?php
 
 /**
- * This file is auto-generated.
+ * This file was auto-generated.
  */
  
 namespace App\Handlers;
