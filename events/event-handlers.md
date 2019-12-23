@@ -12,7 +12,7 @@ description: >-
 <?php
 
 /**
- * This file is auto-generated.
+ * This file was auto-generated.
  */
  
 namespace App\Handlers;
@@ -70,7 +70,7 @@ sAuthentic
 <?php
 
 /**
- * This file is auto-generated.
+ * This file was auto-generated.
  */
  
 namespace App\Handlers;
@@ -93,10 +93,10 @@ class WhenAuthenticated implements HandlerInterface
 
 	/**
 	 * Your Event Handler Logic here
-	 * @param App\Events\Test $event
+	 * @param App\Events\UserAuthenticated $event
 	 * @return mixed
 	 */
-	public function isAuthentic(Test $event)
+	public function isAuthentic(UserAuthenticated $event)
 	{
 		return null;
 	}
@@ -130,6 +130,8 @@ event('on:userauthenticated');
 inside of any controller or view-model for that matter, this is because of the contract provided in the event handler, so we are left with the option of:
 
 ```php
-event(new \App\Events\Test());
+event(new \App\Events\UserAuthenticated());
 ```
+
+
 
