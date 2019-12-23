@@ -1,6 +1,6 @@
 (function($) {
   $.extend({
-    php: function(url, params) {
+    yuga: function(url, params) {
       // do an ajax post request
       $.ajax({
         // AJAX-specified URL
@@ -14,30 +14,33 @@
 
         // Handle the beforeSend event
         beforeSend: function() {
-          return php.beforeSend();
+          return yuga.beforeSend();
         },
         // Handle the success event
         success: function(data, textStatus) {
-          return php.success(data, textStatus);
+          return yuga.success(data, textStatus);
         },
         // Handle the error event
         error: function(xmlEr, typeEr, except) {
-          return php.error(xmlEr, typeEr, except);
+          return yuga.error(xmlEr, typeEr, except);
         },
         // Handle the complete event
         complete: function(XMLHttpRequest, textStatus) {
-          return php.complete(XMLHttpRequest, textStatus);
+          return yuga.complete(XMLHttpRequest, textStatus);
         }
       });
     }
   });
 
-  php = {
+  yuga = {
     /**
      * beforeSend
      */
     beforeSend: function() {
       return true;
+    },
+    onServer: function (response, textStatus) {
+      
     },
     /**
      * success
@@ -46,6 +49,7 @@
      * @param string textStatus
      */
     success: function(response, textStatus) {
+      this.onServer(response, textStatus);
       // call jQuery methods
       if (response['query'] !== undefined) {
         for (var i = 0; i < response["query"].length; i++) {
@@ -212,12 +216,12 @@
     
 
       // predefined actions named as
-      // Methods of ObjResponse in PHP side
+      // Methods of ObjResponse in yuga side
       if (response['action'] !== undefined) {
         $.each(response["action"], function (func, params) {
             for (var i = 0; i < params.length; i++) {
                 try {
-                    php[func](params[i]);
+                    yuga[func](params[i]);
                 } catch (error) {
                     // if is error
                     alert(
@@ -252,27 +256,27 @@
     error: function(xmlEr, typeEr, except) {
       var exObj = except ? except : false;
 
-      $("#php-error").remove();
+      $("#yuga-error").remove();
 
       var printCss =
         "<style type='text/css'>" +
-        "#php-error{ width:640px; position:absolute; top:4px; right:4px; border:1px solid #f00; }" +
-        "#php-error .php-title{ width:636px; height:26px; position:relative; line-height:26px; background-color:#f66; color:#fff; font-weight:bold; font-size:12px;padding-left:4px; }" +
-        "#php-error .php-more { width:20px;  height:20px; position:absolute; top:2px; right:24px; line-height:20px; text-align:center; cursor:pointer; border:1px solid #f00; background-color:#fee; color:#333; }" +
-        "#php-error .php-close{ width:20px;  height:20px; position:absolute; top:2px; right:2px;  line-height:20px; text-align:center; cursor:pointer; border:1px solid #f00; background-color:#fee; color:#333; }" +
-        "#php-error .php-desc { width:636px; position:relative; background-color:#fee;padding-left:4px;}" +
-        "#php-error .php-content{ display:none;}" +
-        "#php-error textarea{ width:634px;height:400px;overflow:auto;padding:2px;}" +
+        "#yuga-error{ width:640px; position:absolute; top:4px; right:4px; border:1px solid #f00; }" +
+        "#yuga-error .yuga-title{ width:636px; height:26px; position:relative; line-height:26px; background-color:#f66; color:#fff; font-weight:bold; font-size:12px;padding-left:4px; }" +
+        "#yuga-error .yuga-more { width:20px;  height:20px; position:absolute; top:2px; right:24px; line-height:20px; text-align:center; cursor:pointer; border:1px solid #f00; background-color:#fee; color:#333; }" +
+        "#yuga-error .yuga-close{ width:20px;  height:20px; position:absolute; top:2px; right:2px;  line-height:20px; text-align:center; cursor:pointer; border:1px solid #f00; background-color:#fee; color:#333; }" +
+        "#yuga-error .yuga-desc { width:636px; position:relative; background-color:#fee;padding-left:4px;}" +
+        "#yuga-error .yuga-content{ display:none;}" +
+        "#yuga-error textarea{ width:634px;height:400px;overflow:auto;padding:2px;}" +
         "</style>";
 
       // error report for popup window coocking
       var printStr =
-        "<div id='php-error'>" +
-        "<div class='php-title'>Error in AJAX request" +
-        "<div class='php-more'>&raquo;</div>" +
-        "<div class='php-close'>X</div>" +
+        "<div id='yuga-error'>" +
+        "<div class='yuga-title'>Error in AJAX request" +
+        "<div class='yuga-more'>&raquo;</div>" +
+        "<div class='yuga-close'>X</div>" +
         "</div>" +
-        "<div class='php-desc'>";
+        "<div class='yuga-desc'>";
 
       printStr += "<b>XMLHttpRequest exchange</b>: ";
 
@@ -311,10 +315,10 @@
       printStr += "<br/>\n";
       // add response text
       printStr +=
-        "<b>Response text</b> (<small><a href='#' class='php-more2'>show more information &raquo;</a></small>):";
+        "<b>Response text</b> (<small><a href='#' class='yuga-more2'>show more information &raquo;</a></small>):";
       printStr += "</div>\n";
       printStr +=
-        "<div class='php-content'><textarea>" +
+        "<div class='yuga-content'><textarea>" +
         xmlEr.responseText +
         "</textarea></div>";
       printStr += "</div>";
@@ -322,7 +326,7 @@
       $(document.body).append(printCss);
       $(document.body).append(printStr);
 
-      $("#php-error .php-more").hover(
+      $("#yuga-error .yuga-more").hover(
         function() {
           $(this).css("background-color", "#fff");
         },
@@ -330,21 +334,21 @@
           $(this).css("background-color", "#fee");
         }
       );
-      $("#php-error .php-more").click(function() {
-        $("#php-error .php-content").slideToggle();
+      $("#yuga-error .yuga-more").click(function() {
+        $("#yuga-error .yuga-content").slideToggle();
       });
-      $("#php-error .php-more2").click(function() {
-        $("#php-error .php-content").slideToggle();
+      $("#yuga-error .yuga-more2").click(function() {
+        $("#yuga-error .yuga-content").slideToggle();
         return false;
       });
 
-      $("#php-error .php-close").click(function() {
-        $("#php-error").fadeOut("fast", function() {
-          $("#php-error").remove();
+      $("#yuga-error .yuga-close").click(function() {
+        $("#yuga-error").fadeOut("fast", function() {
+          $("#yuga-error").remove();
         });
       });
 
-      $("#php-error .php-close").hover(
+      $("#yuga-error .yuga-close").hover(
         function() {
           $(this).css("background-color", "#fff");
         },
@@ -376,7 +380,7 @@
       var message = data.msg || "";
       var callBackFunc = data.callback || "defaultCallBack";
       var callBackParams = data.params || {};
-      php.messages[callBackFunc](message, callBackParams);
+      yuga.messages[callBackFunc](message, callBackParams);
     },
 
     /**
@@ -389,7 +393,7 @@
       var message = data.msg || "";
       var callBackFunc = data.callback || "defaultCallBack";
       var callBackParams = data.params || {};
-      php.errors[callBackFunc](message, callBackParams);
+      yuga.errors[callBackFunc](message, callBackParams);
     },
 
     /**
@@ -400,7 +404,7 @@
     addData: function(data) {
       // call registered or default func
       var callBackFunc = data.callback || "defaultCallBack";
-      php.data[callBackFunc](data.k, data.v);
+      yuga.data[callBackFunc](data.k, data.v);
     },
 
     /**
@@ -430,5 +434,5 @@
       }
     }
   };
-  // end of php actions
+  // end of yuga actions
 })(jQuery);
