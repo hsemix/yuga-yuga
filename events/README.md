@@ -4,10 +4,10 @@ description: Events are a very important aspect of applications nowadays.
 
 # Events
 
-In a typical **yuga** application, events are triggered almost everywhere in the entire application, i.e, when someone `loads` your application, the `on:start` event is triggered, when someone `queries` the database, the `on:query` event is triggered, when someone `logs in`to your application, the `on:authenticate` event is triggered, when someone `logs out`, the `on:logout` event is triggered.  
+In a typical **yuga** application, events are triggered almost everywhere in the entire application, i.e, when someone `loads` your application, the `on:start` event is triggered, when someone `queries` the database, the `on:query` event is triggered, when someone `logs in`to your application, the `on:authenticate` event is triggered, when someone `logs out`, the `on:logou`t event is triggered.  
 All the mentioned events are **built-in events** that come with yuga, of course someone can define their own events and trigger them any where in the application
 
-The idea behind events is the ability to send data, as parameters, to handlers and call them when an event happens. The handlers could be a closure or a static class method, or even an instance object method.
+The idea behind events is the ability to send data, as parameters, to handlers and call them when an event happens. The handlers could be a closure or a static class method, or event an instance object method.
 
 ### Registering Events & Handlers
 

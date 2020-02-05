@@ -16,7 +16,7 @@ Your own application, as well as all of Yuga's core services are registered via 
 * Router
 * Console Application, to name but a few.
 
- Registered Service Providers are found in `config/ServiceProviders.php` When the file is opened, you will see an array return from that file which array contains all the registered `service providers`, When you create a service provider using a `yuga command`, this is where it's registered, you can also insert it there by hand if you will.
+ Registered Service Providers are found in `config/ServiceProviders.php` When the file is opened, you will see an array returned from that file which array contains all the registered `service providers`, When you create a service provider using a `yuga command`, this is where it's registered, you can also insert it there by hand if you will.
 
 ### [Creating Service Providers](https://yuga-framework.gitbook.io/documentation/service-providers#creating-service-providers)
 
