@@ -20,7 +20,7 @@ Your own application, as well as all of Yuga's core services are registered via 
 
 ### [Creating Service Providers](https://yuga-framework.gitbook.io/documentation/service-providers#creating-service-providers)
 
-All service providers extend the `Yuga\Providers\ServiceProvider` class and they all contain a `load` method, other methods may be introduce in future and we'll let you know. Use the `load` method to bind everything you want to use in you application.
+All service providers extend the `Yuga\Providers\ServiceProvider` class and they all contain a `load` method, other methods may be introduce in future and we'll let you know. Use the `load` method to bind everything you want to use in your application.
 
 The Yuga command used to generate a service provider is as below:
 
