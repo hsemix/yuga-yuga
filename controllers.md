@@ -59,7 +59,7 @@ The Yuga [service container](https://yuga-framework.gitbook.io/documentation/pro
 <?php
 namespace App\Controllers;
 
-use App\Models\Posts;
+use App\Models\Post;
 use Yuga\Controllers\Controller;
 
 class UserController extends Controller

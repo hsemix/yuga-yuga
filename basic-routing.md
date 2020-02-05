@@ -1,6 +1,6 @@
 # Routing
 
-Building routes for your application is one way of linking pages through out the entire application. We have quite a few ways you can do that as follows
+### Building routes for your application is one way of linking pages through out the entire application. We have quite a few ways you can do that as follows
 
 ## Routing
 
