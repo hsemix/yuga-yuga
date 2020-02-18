@@ -10,7 +10,7 @@ description: >-
 
 In a `yuga` application, every view has a `code behind file`which in this case is our view model, `View models` can work as `controllers` but the main difference lies in how they couple with views, a `controller` can return any view and it doesn't interact with the view itself while a `view model` interacts directly with the view and returns only that view. In fact, you don't tell it the view it has to return, It already knows it.
 
-A view model in a yuga application binds a form to a real database `model` such that the developer doesn't need to do the mapping of form fields to a model them selves. 
+A view model in a yuga application binds a form to a real database `model` such that the developer doesn't need to the mapping of form fields to a model them selves. 
 
 It has `automatic validation` of form fields. This can turn out to be a time saver, if custom validation is needed, a `validate` method is provided to a model to which the view model is bound and the view model will run that method instead of the default.
 
@@ -215,7 +215,7 @@ class UserViewModel extends App
 ## Model binding to the **ViewModel**
 
 Think of this as an easier way of mapping every form value to an appropriate Object attribute or property. In **`yuga`**, this works like magic.  
- When a form is submitted, the **`ViewModel`** looks for the bound Model from the scope and maps every form field to a property on that **`Model`** and finally tries to run a `validator` to every field on the form to make sure that every form field is not empty for starters.
+ When a form is submitted, the **`ViewModel`** looks for the bound Model from the scope and every form field a property on that **`Model`** and finally tries to run a `validator` to every field on the form to make sure that every form field is not empty for starters.
 
 The default bound model is `\Yuga\Models\ElegantModel::class` But of course the table that is bound to this model is `elegant_models` which basically doesn't make any sense for every form, so how do we bind a model to a form, Well, there're two ways of doing this, 
 
@@ -352,7 +352,7 @@ class MyViewModel extends App
 {% endtab %}
 {% endtabs %}
 
-The route corresponding to the above `ViewModel` could be any route but Let’s say that it's:
+The route corresponding to the above `ViewModel` could be any route but Let’s say that its:
 
 {% tabs %}
 {% tab title="routes/web.php" %}
@@ -362,7 +362,7 @@ Route::all("/my-view-model", App\ViewModels\MyViewModel::class);
 {% endtab %}
 {% endtabs %}
 
-The `model` parameter in the **`onPost`** method in the **`MyViewModel`** **`ViewModel`**, is the bound model to the form inside the **`My.php`** html file. It can only be an instance of **`Yuga\Database\Elegant\Model`** for it to work well with the **`ViewModel`**.
+The `model` in parameter in the **`onPost`** method in the **`MyViewModel`** **`ViewModel`**, is the bound model to the form inside the **`My.php`** html file. It can only be an instance of **`Yuga\Database\Elegant\Model`** for it to work well with the **`ViewModel`**.
 
 By default, the bound model is **`Yuga\Models\ElegantModel`**
 
@@ -380,7 +380,7 @@ Like the code above, you just have to call the save method to the model since it
 
 #### Form Validation
 
-Forms in view-models are validated automatically for required field validations. This means, if a form is submitted to the server, the framework will look for the form, validate it \(making sure every field has a value basically\) then bind it to the appropriate model, then provide it as an Argument to the `onPost` method as below:
+Forms in view-models are validated automatically for required validation. This means, if a form is submitted to the server, the framework will look for the form, validate it \(making sure every field has a value basically\) then bind it to the appropriate model, then provide it as an Argument to the `onPost` method as below:
 
 ```php
 /**
