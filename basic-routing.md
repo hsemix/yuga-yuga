@@ -50,6 +50,7 @@ Route::options($uri, $callback);
 Route::basic($uri, $callback);
 Route::form($uri, $callback);
 Route::match($uri, $callback);
+Route::all($uri, $callback);
 ```
 
 Following function is taken from the `YUGA's - ...\Routing\Router.php` class, when you use `Route::get()` method to add a route for your site/application, `YUGA` adds both methods for the `url`, it means that, these `url`s registered using `get`method could be accessed using both `GET` and `HEAD` `HTTP` method, and [HEAD](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.4) is just another `HTTP` verb/method, used for making a `HEAD` request.
