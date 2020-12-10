@@ -20,4 +20,5 @@
   * [MVC](views/mvc/README.md)
     * [Hax Templates](views/mvc/hax-templates.md)
   * [MVVM](views/mvvm.md)
+* [Helpers](help-functions.md)
 

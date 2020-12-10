@@ -1,12 +1,17 @@
+---
+description: >-
+  Routing allows you to customize your URLs by specifying which URL patterns
+  refer to which controllers and actions. To add your own routes edit your
+  configuration file /assets/config/routes.php.
+---
+
 # Routing
 
-### Building routes for your application is one way of linking pages through out the entire application. We have quite a few ways you can do that as follows
-
-## Routing
+Building routes for your application is one way of linking pages through out the entire application. We have quite a few ways you can do that as follows:
 
 #### [Basic Routing](https://yuga-framework.gitbook.io/documentation/basic-routing#basic)
 
-The most basic Yuga routes accept a URI and a `Callback`, providing a very simple and expressive method of defining routes:
+ Routing maps request an URI to a specific controller's method. In this chapter, we will discuss the concept of **routing** in Yuga in detail. The most basic Yuga routes accept a URI and a `Callback`, providing a very simple and expressive method of defining routes:
 
 ```php
 Route::get('hello', function () {
@@ -16,9 +21,22 @@ Route::get('hello', function () {
 
 **The Default Route Files**
 
-All Yuga routes are defined in your routes file, which are located in the `routes` directory. This file is automatically loaded by the framework. The `routes/web.php` file defines routes that are for your web application. These routes automatically have CSRF protection.
+All Yuga routes are defined in `your routes file`, which are located in the routes directory. This file is automatically loaded by the framework. The `routes/web.php` file defines routes that are for your web application. Which provides features like session state and CSRF protection.
 
 **Available Router Methods**
+
+The following routes map the same URL to different controller actions based on the HTTP verb used. GET requests will go to the ‘view’ action, while PUT requests will go to the ‘update’ action. There are HTTP helper methods for  {
+
+* GET
+* POST
+* PUT
+* PATCH
+* DELETE
+* OPTIONS
+
+
+
+}
 
 The router allows you to register routes that respond to any HTTP verb:
 
@@ -31,9 +49,30 @@ Route::delete($uri, $callback);
 Route::options($uri, $callback);
 Route::basic($uri, $callback);
 Route::form($uri, $callback);
+Route::match($uri, $callback);
+Route::all($uri, $callback);
 ```
 
-Sometimes you may need to use a route that calls multiple HTTP verbs. You can do this by using the `match` method. Or, you may even register a route that responds to all HTTP verbs using the `all`method:
+Following function is taken from the `YUGA's - ...\Routing\Router.php` class, when you use `Route::get()` method to add a route for your site/application, `YUGA` adds both methods for the `url`, it means that, these `url`s registered using `get`method could be accessed using both `GET` and `HEAD` `HTTP` method, and [HEAD](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.4) is just another `HTTP` verb/method, used for making a `HEAD` request.
+
+```text
+public function get($uri, $action)
+{
+    return $this->addRoute(array('GET', 'HEAD'), $uri, $action);
+}
+```
+
+The `HEAD` request is almost identical to a `GET` request, they only differ by a single fundamental aspect: **the `HEAD` response should not include a payload \(the actual data\).** 
+
+This makes the **HEAD HTTP verb** fundamental for managing the validity of your current cached data.
+
+The value for a header field in the response of your `HEAD` request will warn you if your data is not up-to-date. After that you can make a proper `GET` request retrieving the updated data.
+
+This can be achieved observing the `Content-Length` field or the `Last-Modified` field for example.
+
+Sometimes you may need to use a route that calls multiple HTTP verbs. You can do this by using the `match` method. Or, you may even register a route that responds to all HTTP verbs using the `all`method: 
+
+ All of the above methods return the route instance allowing you to leverage the [fluent setters](https://book.cakephp.org/3/en/development/routing.html#route-fluent-methods) to further configure your route.
 
 ```php
 Route::match(['get', 'post'], '/', function () {
