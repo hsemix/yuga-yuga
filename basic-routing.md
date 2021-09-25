@@ -1,17 +1,20 @@
 ---
 description: >-
   Routing allows you to customize your URLs by specifying which URL patterns
-  refer to which controllers and actions. To add your own routes edit your
-  configuration file /assets/config/routes.php.
+  refer to which controllers and actions or ViewModels.
 ---
 
 # Routing
 
-Building routes for your application is one way of linking pages through out the entire application. We have quite a few ways you can do that as follows:
+## Routing
 
-#### [Basic Routing](https://yuga-framework.gitbook.io/documentation/basic-routing#basic)
+#### Building routes for your application is one way of linking pages through out the entire application. We have quite a few ways you can do that as follows
 
- Routing maps request an URI to a specific controller's method. In this chapter, we will discuss the concept of **routing** in Yuga in detail. The most basic Yuga routes accept a URI and a `Callback`, providing a very simple and expressive method of defining routes:
+### Routing
+
+**Basic Routing**
+
+The most basic Yuga routes accept a URI and a `Callback`, providing a very simple and expressive method of defining routes:
 
 ```php
 Route::get('hello', function () {
@@ -21,22 +24,9 @@ Route::get('hello', function () {
 
 **The Default Route Files**
 
-All Yuga routes are defined in `your routes file`, which are located in the routes directory. This file is automatically loaded by the framework. The `routes/web.php` file defines routes that are for your web application. Which provides features like session state and CSRF protection.
+All Yuga routes are defined in your routes file, which are located in the `routes` directory. This file is automatically loaded by the framework. The `routes/web.php` file defines routes that are for your web application. These routes automatically have CSRF protection.
 
 **Available Router Methods**
-
-The following routes map the same URL to different controller actions based on the HTTP verb used. GET requests will go to the ‘view’ action, while PUT requests will go to the ‘update’ action. There are HTTP helper methods for  {
-
-* GET
-* POST
-* PUT
-* PATCH
-* DELETE
-* OPTIONS
-
-
-
-}
 
 The router allows you to register routes that respond to any HTTP verb:
 
@@ -49,30 +39,9 @@ Route::delete($uri, $callback);
 Route::options($uri, $callback);
 Route::basic($uri, $callback);
 Route::form($uri, $callback);
-Route::match($uri, $callback);
-Route::all($uri, $callback);
 ```
 
-Following function is taken from the `YUGA's - ...\Routing\Router.php` class, when you use `Route::get()` method to add a route for your site/application, `YUGA` adds both methods for the `url`, it means that, these `url`s registered using `get`method could be accessed using both `GET` and `HEAD` `HTTP` method, and [HEAD](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.4) is just another `HTTP` verb/method, used for making a `HEAD` request.
-
-```text
-public function get($uri, $action)
-{
-    return $this->addRoute(array('GET', 'HEAD'), $uri, $action);
-}
-```
-
-The `HEAD` request is almost identical to a `GET` request, they only differ by a single fundamental aspect: **the `HEAD` response should not include a payload \(the actual data\).** 
-
-This makes the **HEAD HTTP verb** fundamental for managing the validity of your current cached data.
-
-The value for a header field in the response of your `HEAD` request will warn you if your data is not up-to-date. After that you can make a proper `GET` request retrieving the updated data.
-
-This can be achieved observing the `Content-Length` field or the `Last-Modified` field for example.
-
-Sometimes you may need to use a route that calls multiple HTTP verbs. You can do this by using the `match` method. Or, you may even register a route that responds to all HTTP verbs using the `all`method: 
-
- All of the above methods return the route instance allowing you to leverage the [fluent setters](https://book.cakephp.org/3/en/development/routing.html#route-fluent-methods) to further configure your route.
+Sometimes you may need to use a route that calls multiple HTTP verbs. You can do this by using the `match` method. Or, you may even register a route that responds to all HTTP verbs using the `all`method:
 
 ```php
 Route::match(['get', 'post'], '/', function () {
@@ -84,7 +53,7 @@ Route::all('foo', function () {
 });
 ```
 
-#### [Route Parameters](https://yuga-framework.gitbook.io/documentation/basic-routing#route-parameter)
+**Route Parameters**
 
 **Required Parameters**
 
@@ -134,7 +103,7 @@ Route::get('user/{id}/{name}', function ($id, $name) {
 })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
 ```
 
-#### [Named Routes](https://yuga-framework.gitbook.io/documentation/basic-routing#named-routes)
+**Named Routes**
 
 Named routes allow you to conveniently make URLs or redirects for specific routes. You can specify a name for a route by chaining the `name` method onto the route definition:
 
@@ -172,7 +141,7 @@ Route::get('user/{id}/posts', function ($id) {
 $url = route('posts', ['id' => 1]);
 ```
 
-#### Form Method Spoofing
+**Form Method Spoofing**
 
 HTML forms do not support `PUT`, `PATCH` or `DELETE` actions. So, when defining `PUT`, `PATCH` or `DELETE` routes that are called from an HTML form, you will need to add a hidden `_method` field to the form. The value sent with the `_method` field will be used as the HTTP request method:
 
@@ -180,7 +149,7 @@ HTML forms do not support `PUT`, `PATCH` or `DELETE` actions. So, when defining 
 <input type="hidden" name="_method" value="PUT" />
 ```
 
-#### Route groups
+**Route groups**
 
 Route groups allow you to share route attributes, such as middleware or namespaces, across a large number of routes without needing to define those attributes on each individual route. Shared attributes are specified in an array format as the first parameter to the `Route::group` method.
 
@@ -248,7 +217,7 @@ Any forms posting to `POST`, `PUT` or `DELETE` routes should include the CSRF-to
 <input type="hidden" name="_token" value="<?=csrf_token()?>" />
 ```
 
-#### Implicit Routing \(Mapping Routes to Controllers\)
+**Implicit Routing \(Mapping Routes to Controllers\)**
 
 Some developers that are used to the usual mvc route-to-controller mapping i.e `http://localhost:8000/home` would map to
 
@@ -266,6 +235,4 @@ Also note that the order of the routes is `/controller/method/arg1/arg2/args....
 ```
 
 Also note that for this to work, the router makes an assumption of the controller living in `app/Controllers` directory and so with a namespace of `App\Controllers`. It also adds the word controller to the URI therefore `/home` is mapped to `HomeController`.
-
-
 

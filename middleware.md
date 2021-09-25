@@ -10,7 +10,7 @@ If the user is not authenticated, the middleware will redirect the user to the l
 
 Of course, additional middleware can be written to perform a variety of tasks besides authentication.
 
-There are several middleware that come with yuga-framework, including middleware for authentication and CSRF protection. App middlew middleware are located in the `app/Middleware` directory, but the ones that come with the framework are distributed across the entire framework depending on what they accomplish.
+There are several middleware that come with yuga-framework, including middleware for authentication and CSRF protection. App middleware are located in the `app/Middleware` directory, but the ones that come with the framework are distributed across the entire framework depending on what they accomplish.
 
 ### Defining Middleware
 
@@ -81,7 +81,7 @@ return [
 ];
 ```
 
-Once the middleware has been defined in the config/AppMiddleware array, you can use on a given route as below:
+Once the middleware has been defined in the config/AppMiddleware array, you can use it on a given route as below:
 
 ```php
 // Single middleware
@@ -107,6 +107,4 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 ```
-
-
 

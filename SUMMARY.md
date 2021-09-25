@@ -21,4 +21,5 @@
     * [Hax Templates](views/mvc/hax-templates.md)
   * [MVVM](views/mvvm.md)
 * [Helpers](help-functions.md)
+* [Schedulers](schedulers.md)
 
