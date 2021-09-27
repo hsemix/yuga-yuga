@@ -299,7 +299,7 @@ class PageController extends Controller
      * Posting a form from the Salaries view
      * @param Request $request
      */
-    protected function postSalaries($request)
+    protected function postSalaries(Request $request)
     {
         /**
          * You have access to the entire request object
