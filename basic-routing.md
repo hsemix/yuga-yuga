@@ -268,9 +268,9 @@ MVP_CONTROLLER=PageController # Defaults to Controller
 The following might be the structure of PageController.
 
 ```javascript
-<?php
-
 namespace App\Controllers;
+
+use Yuga\Http\Request;
 
 class PageController extends Controller
 {
@@ -297,9 +297,14 @@ class PageController extends Controller
 
     /**
      * Posting a form from the Salaries view
+     * @param Request $request
      */
     protected function postSalaries($request)
     {
+        /**
+         * You have access to the entire request object
+         * You can post to the database, send mails, or do any data processing 
+         */
         dump($request->except(['_token']));
         return;
     }
