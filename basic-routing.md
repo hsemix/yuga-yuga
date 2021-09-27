@@ -247,9 +247,9 @@ http://localhost:8000/home
 Will be mapped to a page like.
 
 ```javascript
-<!-- View stored in resources/views/home.hax.php -->
+<!-- View stored in resources/views/Pages/home.hax.php -->
 OR
-<!-- View stored in resources/views/home.php -->
+<!-- View stored in resources/views/Pages/home.php -->
 ```
 
 > Please note that implicit routing and page-focused routing don't get along, one of them must be turned off for the other to work.
