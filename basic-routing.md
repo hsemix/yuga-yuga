@@ -252,3 +252,58 @@ OR
 <!-- View stored in resources/views/home.php -->
 ```
 
+> Please note that implicit routing and page-focused routing don't get along, one of them must be turned off for the other to work.
+
+#### Configuration settings for page-focused routing.
+
+All settings for the framework are pretty much put in this file, this goes the same for page-focused routing as well, so locate the following variables and set them to your liking
+
+```javascript
+<!-- environment/.env -->
+PREFIX_MVP_ROUTE="/pages" # Defaults for ''
+ENABLE_MVP_ROUTES=true # Defaults to false
+MVP_CONTROLLER=PageController # Defaults to Controller
+```
+
+The following might be the structure of PageController.
+
+```javascript
+<?php
+
+namespace App\Controllers;
+
+class PageController extends Controller
+{
+    /**
+     * Any data that is caried down to the Test view
+     * Could be records from the database
+     */
+    protected function renderTest()
+    {
+        $this->view->name = "Hamid";
+    }
+
+    /**
+     * Any data that is caried down to the Salaries view
+     * Could be records from the database
+     */
+    protected function renderSalaries()
+    {
+        $this->view->name = "Jane Doe";
+        $this->view->users = [
+            ['id' => 1, 'name' => 'Jane Doe',],
+        ];
+    }
+
+    /**
+     * Posting a form from the Salaries view
+     */
+    protected function postSalaries($request)
+    {
+        dump($request->except(['_token']));
+        return;
+    }
+    
+}
+```
+
