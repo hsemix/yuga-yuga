@@ -236,3 +236,19 @@ Also note that the order of the routes is `/controller/method/arg1/arg2/args....
 
 Also note that for this to work, the router makes an assumption of the controller living in `app/Controllers` directory and so with a namespace of `App\Controllers`. It also adds the word controller to the URI therefore `/home` is mapped to `HomeController`.
 
+**Page Focused Routing \(Mapping Routes to pages in the view directory\)**
+
+Some developers find it very hard to work with controllers and routes at the same time, besides having implicit routing, yuga-framework supports a page focused routing mechanism, in which a route of any depth is mapped directly to a page inside of the `resources/views/Pages/` directory. E.g
+
+```javascript
+http://localhost:8000/home
+```
+
+Will be mapped to a page like.
+
+```javascript
+<!-- View stored in resources/views/home.hax.php -->
+OR
+<!-- View stored in resources/views/home.php -->
+```
+
