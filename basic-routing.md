@@ -260,7 +260,7 @@ All settings for the framework are pretty much put in this file, this goes the s
 
 ```javascript
 <!-- environment/.env -->
-PREFIX_MVP_ROUTE="/pages" # Defaults for ''
+PREFIX_MVP_ROUTE="/pages" # Defaults for '/'
 ENABLE_MVP_ROUTES=true # Defaults to false
 MVP_CONTROLLER=PageController # Defaults to Controller
 ```
