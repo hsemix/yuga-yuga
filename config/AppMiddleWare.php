@@ -4,4 +4,6 @@
  */
 return [
 	'guest' => \App\Middleware\RedirectIfAuthenticated::class,
+	'api' => \App\Middleware\ApiMiddleware::class,
+	'web' => \App\Middleware\WebMiddleware::class,
 ];

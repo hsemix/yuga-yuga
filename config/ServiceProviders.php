@@ -10,4 +10,5 @@ return [
 	\Yuga\Mailables\MailableServiceProvider::class,
 	\Yuga\Validate\ValidateServiceProvider::class,
 	\Yuga\Route\Rewrite\RouteRewriteServiceProvider::class,
+	\App\Providers\RouteProvider::class,
 ];

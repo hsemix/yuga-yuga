@@ -1,12 +1,9 @@
 #!/usr/bin/env php
 <?php
-require_once __DIR__.'/vendor/autoload.php';
-require_once __DIR__.'/boot/autoload.php';
 
 /**
  * Start the application
  */
-
 $app = require __DIR__.'/boot/app.php';
 
 //--------------------------------------------------------------------------
