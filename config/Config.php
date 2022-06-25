@@ -46,6 +46,19 @@ return [
                 PDO::ATTR_EMULATE_PREPARES => false,
                 PDO::ATTR_PERSISTENT => true,
             ],
-        ]
+        ],
+        'backup' => [
+            // The path where database dumps are stored.
+            'path'  => path(env('DATABASE_BACKUP_DIR', 'app/Database/Backup')),
+    
+            // The paths to the MySQL tools used by Yuga.
+            'mysql' => [
+                'dumpCommandPath'    => env('MYSQL_DUMP_COMMAND_PATH', '/usr/bin/mysqldump'),
+                'restoreCommandPath' => env('MYSQL_RESTORE_COMMAND_PATH', '/usr/bin/mysql'),
+            ],
+    
+            // Whether or not the dump file is compressed.
+            'compress' => true,
+        ],
     ]
 ];

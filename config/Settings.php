@@ -1,6 +1,6 @@
 <?php
 /**
- * Holdes App settings for example the session name that you want to use, the remember 
+ * Holds App settings for example the session name that you want to use, the remember 
  * key token name that you wish to use
  * And settings for the email clients
  * 
@@ -8,7 +8,7 @@
  */
 return [
     'session' => [
-        'name' => 'bank_user',
+        'name' => 'yuga_session',
     ],
     'remember' => [
         'name' 	=> 'hash_token',
@@ -26,16 +26,6 @@ return [
                 'mailtype'  => 'html',
                 'charset'   => 'iso-8859-1'
             ]
-        ],
-        'PHPMailer' => [
-            'auth' 			=> true, // authentication
-            'debug_mode' 	=> 0, // debug mode // for debugging use 2, and 0 on a live server
-            'host' 			=> '', // host name
-            'username' 		=> '', // your email address
-            'password' 		=> '', // password to the provided email address
-            'security' 		=> 'ssl', // security mode
-            'port' 			=> 465, // port number,
-            'is_html' 		=> true,
         ]
     ],
     'app' => [
