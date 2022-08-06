@@ -11,4 +11,5 @@ return [
 	\Yuga\Validate\ValidateServiceProvider::class,
 	\Yuga\Route\Rewrite\RouteRewriteServiceProvider::class,
 	\App\Providers\RouteProvider::class,
+	\App\Providers\SchedulerProvider::class,
 ];
