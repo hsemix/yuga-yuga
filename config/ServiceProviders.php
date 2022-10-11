@@ -12,4 +12,6 @@ return [
 	\Yuga\Route\Rewrite\RouteRewriteServiceProvider::class,
 	\App\Providers\RouteProvider::class,
 	\App\Providers\SchedulerProvider::class,
+	\Yuga\Queue\QueueServiceProvider::class,
+	\Yuga\Cache\CacheServiceProvider::class,
 ];
