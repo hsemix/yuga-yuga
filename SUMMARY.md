@@ -22,4 +22,6 @@
   * [MVVM](views/mvvm.md)
 * [Helpers](help-functions.md)
 * [Schedulers](schedulers.md)
-
+* [Queue worker](queue-worker.md)
+* [Commands](commands/README.md)
+  * [Scaffold](commands/scaffold.md)
