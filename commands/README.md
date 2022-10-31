@@ -1,6 +1,0 @@
----
-description: Yuga commands
----
-
-# Commands
-

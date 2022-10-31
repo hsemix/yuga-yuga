@@ -15,7 +15,8 @@
         }
     ],
     "require": {
-        "yuga/framework": "^4.0"
+        "yuga/framework": "^4.0",
+        "yuga/repl": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.4|^8.0|^9.0"
