@@ -1,6 +1,6 @@
 {
     "name": "yuga/yuga",
-    "description": "The Yuga Framework.",
+    "description": "The Yuga Framework Application Skeleton.",
     "keywords": ["framework", "Yuga"],
     "homepage": "https://yuga.byakuno.com",
     "type" : "project",
