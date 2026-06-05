@@ -14,4 +14,5 @@ return [
 	\App\Providers\SchedulerProvider::class,
 	\Yuga\Queue\QueueServiceProvider::class,
 	\Yuga\Cache\CacheServiceProvider::class,
+	\Yuga\Repl\Providers\ReplServiceProvider::class,
 ];

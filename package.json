@@ -1,0 +1,30 @@
+{
+  "name": "yuga-yuga",
+  "version": "5.0.0",
+  "description": "--- description: 'A php framework for people with mvvm background knowledge,' ---",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx @tailwindcss/cli -i ./resources/css/app.css -o ./public/assets/css/app.css --watch",
+    "build": "npx @tailwindcss/cli -i ./resources/css/app.css -o ./public/assets/css/app.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hsemix/yuga-yuga.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hsemix/yuga-yuga/issues"
+  },
+  "homepage": "https://github.com/hsemix/yuga-yuga#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "tailwindcss": "^4.3.0"
+  }
+}

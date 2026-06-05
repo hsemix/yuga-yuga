@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "yuga/framework": "^4.0",
+        "yuga/framework": "^5.0",
         "yuga/repl": "^1.0"
     },
     "require-dev": {

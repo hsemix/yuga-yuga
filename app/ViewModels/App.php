@@ -12,11 +12,8 @@ abstract class App extends ViewModel
         parent::__construct();
         $this->name = 'Yuga Framework';
         $this->getSite()->setTitle('Welcome to ' . $this->name)
-                        ->addCss(assets('yuga/bootstrap/css/bootstrap.min.css'))
-                        ->addCss(assets('yuga/css/yuga.css'))
-                        ->addJs(assets('yuga/js/jQuery/jquery-2.2.3.min.js'))
-                        ->addJs(assets('yuga/bootstrap/js/bootstrap.min.js'))
-                        ->addJs(assets('yuga/js/yuga.client.js'));
+                        ->addCss(assets('assets/css/app.css'))
+                        ->addJs(assets('yuga/js/ys.min.js'));
         $this->makeMenu();
     }
 
