@@ -47,6 +47,6 @@ $app = new \Yuga\Application\Application(
 |--------------------------------------------------------------------------
 */
 
-$app->run();
+$app->bootstrap();
 
 return $app;
